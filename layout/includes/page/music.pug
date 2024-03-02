@@ -1,8 +1,33 @@
 #anMusic-page
-  #anMusicBtnGetSong(title="随机周董单曲，打开异世界的大梦")
-    i(class="anzhiyufont anzhiyu-icon-shuffle")
-  #anMusicRefreshBtn(title="立即刷新最新歌单")
-    i(class="anzhiyufont anzhiyu-icon-arrows-rotate")
-  #anMusicSwitching(title="切换歌单")
-    i(class="anzhiyufont anzhiyu-icon-repeat")
+  #anMusic-mask
+  .anMusicDot
+    .anMusicList(onclick="NaoKuo.musicBtnClis()")
+      i.naokuofont.naokuo-icon-music
+    .pulse.p1
+    .pulse.p2
+    #anMusicBtn
+      #anMusicBtnGetSong(title="随机周董单曲，打开异世界的大梦")
+        i(class="naokuofont naokuo-icon-shuffle")
+      #anMusicRefreshBtn(title="立即刷新最新歌单")
+        i(class="naokuofont naokuo-icon-arrows-rotate")
+      #anMusicSwitching(title="切换本地歌单")
+        i(class="naokuofont naokuo-icon-repeat")
+  #eo-music-list
+    .eo-mlist
+      .eolistbg#eolistbg0
+        .eobg(onclick="NaoKuo.musicListClick(5259237827,'netease',0)")
+          img(alt="原神歌单" src="https://p1.music.126.net/Chx-5BsTlmbDuONz0qPrPQ==/109951166942209690.jpg?param=400y400")
+          span 原神歌单
+      .eolistbg#eolistbg1
+        .eobg(onclick="NaoKuo.musicListClick(2615203896,'netease',1)")
+          img(alt="纯音乐" src="https://p1.music.126.net/tgkN397ohC6XpqRRHzndLw==/2925800441997173.jpg?param=400y400")
+          span 纯音乐
+      .eolistbg#eolistbg2
+        .eobg(onclick="NaoKuo.musicListClick(8223459693,'tencent',2)")
+          img(alt="QQ音乐收藏" src="https://y.qq.com/music/photo_new/T002R500x500M000003yMlDs4YjY79.jpg?n=1")
+          span QQ音乐收藏
+      .eolistbg#eolistbg3
+        .eobg(onclick="NaoKuo.musicListClick(8847403773,'netease',3)")
+          img(alt="一些动画音乐" src="https://p2.music.126.net/gtffPwLmQlcB5IebQnJ9Vg==/28587302334724.jpg?param=400y400")
+          span 一些动画音乐
   #anMusic-page-meting

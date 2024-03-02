@@ -7,7 +7,7 @@
 'use strict'
 
 const postTabs = (args, content) => {
-  const tabBlock = /<!--\s*tab (.*?)\s*-->\n([\w\W\s\S]*?)<!--\s*endtab\s*-->/g
+  const tabBlock = /<!--\s*分栏 (.*?)\s*-->\n([\w\W\s\S]*?)<!--\s*end分栏\s*-->/g
   args = args.join(' ').split(',')
   const tabName = args[0]
   const tabActive = Number(args[1]) || 0
@@ -51,7 +51,7 @@ const postTabs = (args, content) => {
     tabContent += `<div class="tab-item-content${isActive}" id="${tabHref}">${postContent}</div>`
   }
 
-  const toTop = '<div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div>'
+  const toTop = '<div class="tab-to-top"><button type="button" aria-label="scroll to top"><i class="naokuofont naokuo-icon-arrow-up"></i></button></div>'
 
   tabNav = `<ul class="nav-tabs${noDefault ? ' no-default' : ''}">${tabNav}</ul>`
   tabContent = `<div class="tab-contents">${tabContent}</div>`
@@ -59,6 +59,6 @@ const postTabs = (args, content) => {
   return `<div class="tabs" id="${tabName.toLowerCase().split(' ').join('-')}">${tabNav + tabContent + toTop}</div>`
 }
 
-hexo.extend.tag.register('tabs', postTabs, { ends: true })
+hexo.extend.tag.register('分栏组', postTabs, { ends: true })
 hexo.extend.tag.register('subtabs', postTabs, { ends: true })
 hexo.extend.tag.register('subsubtabs', postTabs, { ends: true })

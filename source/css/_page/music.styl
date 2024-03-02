@@ -73,52 +73,47 @@ if hexo-config('nav_music.enable') == false
       #nav-music
         display: flex !important;
 
-@media screen and (max-width: 1400px)
+@media screen and (max-width: 768px)
   body
     #anMusic-page
-      #anMusicSwitching, #anMusicRefreshBtn, #anMusicBtnGetSong
-        right 7vw
-      #anMusicSwitching
-        bottom: 100px
-      #anMusicRefreshBtn
-        bottom: 160px
-      #anMusicBtnGetSong
-        bottom: 220px
+      #anMusicBtn
+        right: 20px
+        bottom: 230px
 
 #anMusic-page
-  #anMusicRefreshBtn, #anMusicBtnGetSong, #anMusicSwitching
+  #anMusicBtn
     position: fixed;
     display: flex;
+    right: 40px;
+    bottom: 160px
+    z-index: 90;
+    gap:10px
+    flex-direction: column;
+    transform: translateY(-10px) scale(0);
+    transition: 0.2s;
+  .anMusicDot
+    &:hover
+      #anMusicBtn
+        transform: translateY(0) scale(1);
+  
+  #anMusicRefreshBtn, 
+  #anMusicBtnGetSong,
+  #anMusicSwitching
     width: 50px;
     height: 50px;
-    bottom: 100px;
-    padding: 5px;
-    background: var(--anzhiyu-white-op);
+    background: rgba(255, 255, 255, 0.3);
     backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     border-radius: 50%;
-    color: #fff;
+    color: rgb(255, 255, 255);
     text-align: center;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-    z-index 2
-  #anMusicBtnGetSong
-    right: 11vw;
-  #anMusicRefreshBtn
-    right: 7vw;
-  #anMusicSwitching
-    right: 15vw;
-  +maxWidth768()
-    div#anMusicBtnGetSong
-      right: 80px;
-      bottom: 150px;
-    div#anMusicRefreshBtn
-      right: 20px;
-      bottom: 150px;
-    div#anMusicSwitching
-      right: 140px;
-      bottom: 150px;
+    box-shadow: rgb(255, 255, 255) 10px 10px 60px, rgb(255, 255, 255) -10px -10px 60px;
+    z-index: 99;
+    i
+      color: rgb(255, 255, 255);
+      font-size: 1.5rem;
+      line-height: 50px;
   meting-js
     .aplayer
       display flex
@@ -157,16 +152,35 @@ if hexo-config('nav_music.enable') == false
             margin-top 10px
             mask-image linear-gradient(to bottom, #000, #000, #000, #000, #000, #000, #000, #000, #000, #000, #0000, #0000)
             p
-              font-size 20px
-              line-height: 20px !important;
-              height: 20px !important;
-              margin: 20px 0 !important;
+              font-size 16px
+              line-height: 20px !important
+              height: 20px
+              margin: 20px 0 !important
               color #fff
-              &.aplayer-lrc-current {
-                min-height: 20px;
-              }
-            &::after, &::before
+              &.aplayer-lrc-current
+                min-height: 20px
+                height: auto
+            &::after,&::before
               display none
+            // 歌词模糊
+            &:not(.aplayer-lrc-current) 
+              p
+                opacity: 0.6
+                cursor: pointer
+                filter: blur(0.8px)
+            .aplayer-lrc-contents
+              p
+                &.aplayer-lrc-current
+                  filter: none
+                  opacity: 1
+                  font-weight: 700
+                  font-size 20px
+            &:hover
+              .aplayer-lrc-contents
+                &:not(.aplayer-lrc-current) 
+                  p
+                    filter: none
+                    opacity: 1
           .aplayer-controller 
             position fixed
             max-width 1500px
@@ -269,7 +283,7 @@ if hexo-config('nav_music.enable') == false
           position fixed
           z-index 1002
           width 100%
-          bottom -88%
+          bottom -100%
           left 0
           background var(--sidebar-bg)
           height auto
@@ -319,14 +333,17 @@ if hexo-config('nav_music.enable') == false
           top 100px
           .aplayer-info
             .aplayer-lrc
-              margin-top 40px
+              margin-top 15px
               height auto
-              max-height 200%
+              max-height calc(100vh - 360px)
               min-height 100%
               mask-image linear-gradient(to bottom, #000, #000, #000, #000, #0000, #0000)
               p
+                font-size: 12px
                 &.aplayer-lrc-current
-                  color #33a673
+                  // color #ffffff
+                  font-size: 16px !important
+                  // font-weight: 700
             .aplayer-controller
               width 100%
               bottom 100px
@@ -373,5 +390,3 @@ if hexo-config('nav_music.enable') == false
                   position absolute
                   right 25px
                   top -90px
-
-      

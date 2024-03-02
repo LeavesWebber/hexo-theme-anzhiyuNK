@@ -135,3 +135,213 @@ cp -rf ./themes/anzhiyu/_config.yml ./_config.anzhiyu.yml
 ## 仓库统计
 
 ![仓库统计](https://repobeats.axiom.co/api/embed/60fcf455cd02123aebe6249deabf8d48e3debcae.svg "Repobeats analytics image")
+
+
+---
+
+# 以上是原作者的声明；以下为个人魔改的说明
+
+- 此主题为个人魔改，如果出现 BUG 请勿麻烦原作者
+
+## 增加页面
+
+- 文章统计页面
+  ```YAML
+  ---
+  title: 文章统计
+  date: 2023-12-26 17:02:05
+  type: statistics
+  aside: false
+  top_img: false
+  top_background: 'https://cdn.cbd.int/naokuo-blog@1.2.12/img/wallhaven-wed6q7.webp'
+  ---
+  ```
+
+- 游戏收藏页面
+  ```YAML
+  ---
+  title: 游戏世界
+  date: 2023-12-24 01:25:30
+  type: 'games'
+  aside: false
+  top_img: false
+  ---
+  ```
+  ```YAML
+  - class_name: 游戏世界
+    description: 我的游戏世界
+    tip: 跟 Naokuo 一起探索世界
+    top_background: # https://cdn.cbd.int/naokuo-blog@1.1.1/img/2023-09-071733054.webp
+    top_video: https://cdn.cbd.int/naokuo-media@1.0.3/MP4/2024-01-19_5.mp4
+    buttonText: 关于我
+    buttonLink: /about/
+    good_games:
+      - title: 游戏集
+        description: 博主收藏的HTML游戏
+        games_list:
+          - name: 🍰 Mikutap
+            specification: Aidn.jp
+            description: "🍰一个有趣的音乐网站源码-Mikutap"
+            image: https://image.thum.io/get/allowJPG/wait/20/width/600/crop/950/https://naokuo.top/games/game/mikutap/
+            link: /games/game/mikutap/
+            source_code: https://github.com/HFIProgramming/mikutap
+
+          - name: 3D元素周期表
+            specification: 
+            description: "3D元素周期表"
+            image: https://image.thum.io/get/allowJPG/wait/20/width/600/crop/950/https://naokuo.top/games/game/3Delement/
+            link: /games/game/3Delement/
+            source_code: https://github.com/YL2209/game/tree/main/3Delement
+
+      - title: 风景一绝
+        description: 不会错过的风景
+        games_list:
+          - name: 原神
+            specification: mihoyo
+            description: 《原神》是一款开放世界冒险游戏，这意味着从你踏入「提瓦特」的第一刻起，只要合理规划自己的体力，不论翻山越岭、还是横渡江河，总有办法见到新的风景。
+            image: https://cdn.cbd.int/naokuo-blog@1.2.19/img/about/63a079ca63c8a.webp
+            link: https://ys.mihoyo.com/cloud/?utm_source=default#/
+  ```
+
+- 待办清单页面
+  ```YAML
+  ---
+  title: 待办清单
+  date: 2023-12-24 01:10:40
+  type: 'todolist'
+  aside: false
+  top_img: false
+  top_background: 'https://cdn.cbd.int/naokuo-blog@1.2.12/img/wallhaven-859z1j.webp'
+  ---
+  ```
+  ```YAML
+  # seat控制清单在左栏还是右栏显示，completed控制是否已完成
+  - class_name: 想做的项目
+    seat: left
+    todo_list:
+      - content: 主页
+        completed: false
+      - content: 小程序
+        completed: false
+
+  - class_name: 想看的书
+    seat: left
+    todo_list:
+      - content: 《骆驼祥子》
+        completed: false
+      - content: 《活着》
+        completed: false
+
+  - class_name: 想买的东西
+    seat: left
+    todo_list:
+      - content: 东西
+        completed: true
+      - content: 机械硬盘盒
+        completed: true
+
+  - class_name: 想学的技术
+    seat: right
+    todo_list:
+      - content: 骑自行车
+        completed: true
+
+  - class_name: 想去的地方
+    seat: right
+    todo_list:
+      - content: 广东
+        completed: true
+      - content: 北京
+        completed: false
+  ```
+
+- 留言板页面
+  ```YAML
+  ---
+  title: 留言板
+  date: 2023-12-26 22:16:14
+  comments: true
+  top_img: false
+  type: 'envelope'
+  aside: false
+  top_background: 'https://cdn.cbd.int/naokuo-blog@1.2.12/img/posts/posts8.webp'
+  ---
+  ```
+
+- 网站收藏页面
+  ```YAML
+  ---
+  title: 网站收藏
+  date: 2024-01-08 12:22:18
+  type: 'websites'
+  aside: false
+  top_img: false
+  ---
+  ```
+  ```YAML
+  - class_name_2: 网站收藏
+    description: 我的网站收藏
+    tip: 博主收藏的宝藏网站
+    # top_background: https://cdn.cbd.int/naokuo-blog/img/2023-09-071733054.webp
+    top_video: https://cdn.cbd.int/naokuo-media@1.0.0/3.mp4
+    buttonText: 关于我
+    buttonLink: /about/
+    good_sites:
+      - class_name: 收藏网站
+        class_desc: 个人收藏的网站
+        sites_list:
+          - name: 稀土掘金
+            link: https://juejin.cn/post/7262897440046678071
+          - name: 恩山论坛
+            link: https://www.right.com.cn/forum/forum.php
+          - name: GitHub
+            link: https://github.com/
+          - name: Butterfly主题美化教程
+            link: https://butterfly.zhheo.com/
+
+      - class_name: 工具箱
+        class_desc: 个人收藏的工具网站
+        sites_list:
+          - name: 透明背景制作
+            link: https://www.unscreen.com/
+          - name: Trending - CodePen
+            link: https://codepen.io/trending
+          - name: CSS clip-path 生成器
+            link: https://www.jiangweishan.com/tool/clippy/
+          - name: 路过图床
+            link: https://imgse.com/
+          - name: JS 代码压缩工具
+            link: https://www.wetools.com/js-compress
+          - name: Css转Stylus
+            link: https://verytoolz.com/css-stylus.html
+
+      - class_name: 资源库
+        class_desc: 个人收藏的资源型网站
+        sites_list:
+          - name: iconfont
+            link: https://www.iconfont.cn/
+          - name: 表情包速查
+            link: https://emotion.xiaokang.me/#/
+
+      - class_name: API库
+        class_desc: 个人收藏的API接口型网站
+        sites_list:
+          - name: 随机图片API
+            link: https://www.cnblogs.com/zaxtyson/p/11628746.html
+          - name: 随机壁纸
+            link: https://api.btstu.cn/doc/sjbz.php
+          - name: 夏柔API
+            link: https://api.aa1.cn/
+          - name: 青桔-API
+            link: https://api.qjqq.cn/
+
+      - class_name: AI工具箱
+        class_desc: 个人收藏的AI工具型网站
+        sites_list:
+          - name: LiblibAI•哩布哩布AI
+            link: https://www.liblib.art/
+          - name: 原神AI语音生成
+            link: https://v2.genshinvoice.top/
+          - name: 通义千问
+            link: https://tongyi.aliyun.com/
+  ```

@@ -120,7 +120,8 @@ div#category {
     .no-text-decoration
   ) {
   font-weight: 500;
-  border-bottom: solid 2px var(--anzhiyu-lighttext);
+  /* border-bottom: solid 2px var(--anzhiyu-lighttext); */
+  border-bottom: 2px dotted var(--anzhiyu-lighttext);
   color: var(--anzhiyu-fontcolor);
   padding: 0 0.2em;
   text-decoration: none;

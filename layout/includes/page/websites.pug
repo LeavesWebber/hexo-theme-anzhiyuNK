@@ -1,0 +1,41 @@
+#webSites
+  if site.data.websites
+    each i in site.data.websites
+      - let games_top_background = i.top_background
+      - let games_top_video = i.top_video
+      .author-content.author-content-item.GamesPage.single(style=`${games_top_background ? `background: url(${games_top_background}) top / cover no-repeat;` : ""}`)
+        if games_top_video
+          video#Top_Video(width="100%" height="100%" style="object-fit: cover;z-index: 0;" preload="auto" autoplay="" loop="" muted="true" playsinline="" webkit-playsinline="" x5-playsinline="" x5-video-player-type="h5" x5-video-player-fullscreen="" x5-video-orientation="portraint" x-webkit-airplay="allow")
+            source(src=`${games_top_video}` type="video/mp4")
+        .card-content
+          .author-content-item-tips=i.class_name_2
+          span.author-content-item-title=i.description
+          .content-bottom
+            .tips=i.tip
+          .banner-button-group
+            a.banner-button(onclick=`pjax.loadUrl('${url_for(i.buttonLink ? i.buttonLink : '/about')}')`, data-pjax-state)
+              i.naokuofont.naokuo-icon-circle-arrow-up-right-1(style='font-size: 1.3rem')
+              span.banner-button-text=i.buttonText ? i.buttonText : "关于我"
+
+      each item in i.good_sites
+        .flink
+          if item.class_name
+            h2!= item.class_name + "(" + item.sites_list.length + ")"
+          if item.class_desc
+            .flink-desc!=item.class_desc
+
+          .flexcard-flink-list
+            each iten in item.sites_list
+              a.flink-list-card.cf-friends-link(href=url_for(iten.link) cf-href=url_for(iten.link) target='_blank')
+                .wrapper.cover
+                  - var siteshot = iten.siteshot ? url_for(iten.siteshot) : '/img/default_cover.webp'
+                  if theme.lazyload.enable
+                    img.cover.fadeIn(data-lazy-src=siteshot onerror=`this.onerror=null;this.src='` + url_for(theme.error_img.post_page) + `'` alt='cover' )
+                  else
+                    img.cover.fadeIn(src=siteshot onerror=`this.onerror=null;this.src='` + url_for(theme.error_img.post_page) + `'` alt='cover' )    
+                .info
+                  if theme.lazyload.enable
+                    img.cf-friends-avatar.no-lightbox.flink-avatar(data-lazy-src=url_for(iten.avatar ? iten.avatar : '/img/moren.png') cf-src=url_for(iten.avatar) onerror=`this.onerror=null;this.src='` + url_for(theme.error_img.flink) + `'` alt='cover' )
+                  else
+                    img.cf-friends-avatar.no-lightbox(src=url_for(iten.avatar ? iten.avatar : '/img/moren.png') cf-src=url_for(iten.avatar) onerror=`this.onerror=null;this.src='` + url_for(theme.error_img.flink) + `'` alt='cover' )
+                  span.flink-sitename.cf-friends-name= iten.name

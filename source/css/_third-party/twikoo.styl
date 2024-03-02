@@ -467,3 +467,25 @@ if hexo-config('comments.use') == 'Twikoo'
     box-shadow: var(--anzhiyu-shadow-lightblack) !important;
     border-radius: 8px;
   }
+
+  :root
+    --naokuo-twikoo-textarea-bg: $twikoo-bg
+
+  [data-theme="dark"]
+    --naokuo-twikoo-textarea-bg: $twikoo-darkbg
+
+  #twikoo
+    .tk-submit
+      .tk-input
+        &.el-textarea
+          .el-textarea__inner
+            min-height: 14.75em !important
+            background-image: var(--naokuo-twikoo-textarea-bg)
+            &:focus
+              background-image: none!important
+
+    .tk-turnstile-container
+      z-index: 100 !important
+    .tk-comments-container
+      .tk-turnstile-container
+        bottom: -29px !important

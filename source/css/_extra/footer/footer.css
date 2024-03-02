@@ -1,7 +1,7 @@
 [data-theme="light"] #footer-wrap {
   color: var(--font-color);
 }
-#footer-wrap .anzhiyufont.anzhiyu-icon-heartbeat {
+#footer-wrap .naokuofont.naokuo-icon-heartbeat {
   transition: 0.3s;
   animation: heartbeat-bounce 2s ease-in-out infinite;
   -webkit-font-smoothing: antialiased;

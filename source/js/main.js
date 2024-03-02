@@ -9,6 +9,9 @@ var anzhiyu_intype = false;
 var anzhiyu_keyUpEvent_timeoutId = null;
 var anzhiyu_keyUpShiftDelayEvent_timeoutId = null;
 
+// 音乐歌单切换初始值
+var indexNum = null, indexNex = null;
+
 // 右键菜单对象
 var rm = null;
 
@@ -238,10 +241,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const highlightShrinkClass = isHighlightShrink === true ? "closed" : "";
     const highlightShrinkEle =
       isHighlightShrink !== undefined
-        ? '<i class="anzhiyufont anzhiyu-icon-angle-down expand ${highlightShrinkClass}"></i>'
+        ? '<i class="naokuofont naokuo-icon-angle-down expand ${highlightShrinkClass}"></i>'
         : "";
     const highlightCopyEle = highlightCopy
-      ? '<div class="copy-notice"></div><i class="anzhiyufont anzhiyu-icon-paste copy-button"></i>'
+      ? '<div class="copy-notice"></div><i class="naokuofont naokuo-icon-paste copy-button"></i>'
       : "";
 
     const alertInfo = (ele, text) => {
@@ -309,7 +312,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (highlightHeightLimit && item.offsetHeight > highlightHeightLimit + 30) {
         const ele = document.createElement("div");
         ele.className = "code-expand-btn";
-        ele.innerHTML = '<i class="anzhiyufont anzhiyu-icon-angle-double-down"></i>';
+        ele.innerHTML = '<i class="naokuofont naokuo-icon-angle-double-down"></i>';
         anzhiyu.addEventListenerPjax(ele, "click", expandCode);
         fragment.appendChild(ele);
       }
@@ -470,19 +473,24 @@ document.addEventListener("DOMContentLoaded", function () {
       ele.forEach(item => {
         item.classList.contains("url")
           ? fetchUrl(item.textContent).then(res => {
-              runJustifiedGallery(item, res);
-            })
+            runJustifiedGallery(item, res);
+          })
           : runJustifiedGallery(item, JSON.parse(item.textContent));
       });
     };
 
-    if (window.fjGallery) {
-      addJustifiedGallery();
-      return;
-    }
-
-    getCSS(`${GLOBAL_CONFIG.source.justifiedGallery.css}`);
-    getScript(`${GLOBAL_CONFIG.source.justifiedGallery.js}`).then(addJustifiedGallery);
+    // if (window.fjGallery) {
+    //   addJustifiedGallery();
+    //   return;
+    // }
+    (async function () {
+      if (typeof fjGallery === 'function') {
+        addJustifiedGallery();
+      } else {
+        await getCSS(`${GLOBAL_CONFIG.source.justifiedGallery.css}`);
+        await getScript(`${GLOBAL_CONFIG.source.justifiedGallery.js}`).then(addJustifiedGallery);
+      }
+    })()
   };
 
   /**
@@ -824,7 +832,7 @@ document.addEventListener("DOMContentLoaded", function () {
       $body.classList.add("read-mode");
       const newEle = document.createElement("button");
       newEle.type = "button";
-      newEle.className = "anzhiyufont anzhiyu-icon-xmark exit-readmode";
+      newEle.className = "naokuofont naokuo-icon-xmark exit-readmode";
       $body.appendChild(newEle);
 
       const clickFn = () => {
@@ -1133,8 +1141,11 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!topGroup) return;
     //首页大卡片恢复显示
     topGroup.addEventListener("mouseleave", function () {
-      document.getElementById("todayCard").classList.remove("hide");
-      document.getElementById("todayCard").style.zIndex = 1;
+      const todayCard = document.getElementById("todayCard");
+      if (todayCard) {
+        todayCard.classList.remove("hide");
+        todayCard.style.zIndex = 1;
+      }
     });
   };
 
@@ -1266,6 +1277,50 @@ document.addEventListener("DOMContentLoaded", function () {
             "--anzhiyu-theme-op-deep",
             getComputedStyle(document.documentElement).getPropertyValue("--anzhiyu-main") + "dd"
           );
+        }
+      } else if (GLOBAL_CONFIG.mainTone.mode == "local") {
+        const handleImageLoad = async () => {
+          try {
+            const colorThief = new ColorThief();
+            const img = new Image();
+
+            img.crossOrigin = "anonymous";
+            img.src = path;
+
+            await new Promise((resolve) => { img.onload = resolve; });
+
+            const ImgColorRGB = await colorThief.getColor(img);
+            const ImgColorHex = colorHex(`rgb(${ImgColorRGB})`);
+
+            let adjustedColor = ImgColorHex;
+            if (getContrastYIQ(ImgColorHex) === "light") {
+              adjustedColor = LightenDarkenColor(ImgColorHex, -40);
+            }
+
+            root.style.setProperty("--anzhiyu-bar-background", adjustedColor);
+            requestAnimationFrame(() => anzhiyu.initThemeColor());
+
+            if (GLOBAL_CONFIG.mainTone.cover_change) {
+              document.documentElement.style.setProperty("--anzhiyu-main", adjustedColor);
+
+              const mainColor = getComputedStyle(document.documentElement).getPropertyValue("--anzhiyu-main");
+              document.documentElement.style.setProperty("--anzhiyu-theme-op", `${mainColor}23`);
+              document.documentElement.style.setProperty("--anzhiyu-theme-op-deep", `${mainColor}dd`);
+            }
+          } catch (err) {
+            console.error("Error fetching data:", err);
+
+            const fallbackValue = "var(--anzhiyu-theme)";
+
+            root.style.setProperty("--anzhiyu-bar-background", fallbackValue);
+            requestAnimationFrame(() => anzhiyu.initThemeColor());
+            document.documentElement.style.setProperty("--anzhiyu-main", fallbackValue);
+          }
+        };
+        if (typeof ColorThief === 'function') {
+          handleImageLoad();
+        } else {
+          await getScript(`${GLOBAL_CONFIG.mainTone.color_thief_js}`).then(handleImageLoad);
         }
       } else {
         const fallbackValue = "var(--anzhiyu-theme)";
@@ -1452,20 +1507,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const timer = setInterval(() => {
       if (navMusicEl && navMusicEl.querySelector("#nav-music meting-js").aplayer) {
         clearInterval(timer);
-        let msgPlay = '<i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span>';
-        let msgPause = '<i class="anzhiyufont anzhiyu-icon-pause"></i><span>暂停音乐</span>';
+        let msgPlay = '<i class="naokuofont naokuo-icon-play"></i><span>播放音乐</span>';
+        let msgPause = '<i class="naokuofont naokuo-icon-pause"></i><span>暂停音乐</span>';
         navMusicEl.querySelector("#nav-music meting-js").aplayer.on("pause", function () {
           navMusicEl.classList.remove("playing");
-          document.getElementById("menu-music-toggle").innerHTML = msgPlay;
-          document.getElementById("nav-music-hoverTips").innerHTML = "音乐已暂停";
-          document.querySelector("#consoleMusic").classList.remove("on");
+          const menu_music_toggle = document.getElementById("menu-music-toggle"),
+            nav_music_hoverTips = document.getElementById("nav-music-hoverTips"),
+            consoleMusic = document.querySelector("#consoleMusic");
+          menu_music_toggle && (menu_music_toggle.innerHTML = msgPlay);
+          nav_music_hoverTips && (nav_music_hoverTips.innerHTML = "音乐已暂停");
+          consoleMusic && consoleMusic.classList.remove("on");
           anzhiyu_musicPlaying = false;
           navMusicEl.classList.remove("stretch");
         });
         navMusicEl.querySelector("#nav-music meting-js").aplayer.on("play", function () {
           navMusicEl.classList.add("playing");
-          document.getElementById("menu-music-toggle").innerHTML = msgPause;
-          document.querySelector("#consoleMusic").classList.add("on");
+          const menu_music_toggle = document.getElementById("menu-music-toggle"),
+            consoleMusic = document.querySelector("#consoleMusic");
+          menu_music_toggle && (menu_music_toggle.innerHTML = msgPause);
+          consoleMusic && consoleMusic.classList.add("on");
           anzhiyu_musicPlaying = true;
           // navMusicEl.classList.add("stretch");
         });
@@ -1572,7 +1632,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // 是否开启快捷键
   function executeShortcutKeyFunction() {
     // 是否开启快捷键
-    anzhiyu_keyboard = localStorage.getItem("keyboardToggle") ? localStorage.getItem("keyboardToggle") : false;
+    anzhiyu_keyboard = saveToLocal.get("keyboardToggle") ? saveToLocal.get("keyboardToggle") : null;
     function addKeyShotListener() {
       const windowObject = window;
       windowObject.removeEventListener("keydown", keyDownEvent);
@@ -1594,12 +1654,12 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       const shortcutKeyDelay = GLOBAL_CONFIG.shortcutKey.delay ? GLOBAL_CONFIG.shortcutKey.delay : 100;
       const shortcutKeyShiftDelay = GLOBAL_CONFIG.shortcutKey.shiftDelay ? GLOBAL_CONFIG.shortcutKey.shiftDelay : 200;
-      if (isKeyboardEnabled && isShiftKeyPressed && !isInInputField) {
+      if (!isKeyboardEnabled && isShiftKeyPressed && !isInInputField) {
         anzhiyu_keyUpShiftDelayEvent_timeoutId = setTimeout(() => {
           switch (event.keyCode) {
             case 16:
               anzhiyu_keyUpEvent_timeoutId = setTimeout(() => {
-                document.querySelector("#keyboard-tips").classList.add("show");
+                document.getElementById("keyboard-tips") && document.querySelector("#keyboard-tips").classList.add("show");
               }, shortcutKeyShiftDelay);
               break;
             case 65:
@@ -1641,7 +1701,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     window.onfocus = function () {
-      document.getElementById("keyboard-tips").classList.remove("show");
+      document.getElementById("keyboard-tips") && document.getElementById("keyboard-tips").classList.remove("show");
     };
 
     function keyUpEvent(event) {
@@ -1649,7 +1709,7 @@ document.addEventListener("DOMContentLoaded", function () {
       anzhiyu_keyUpShiftDelayEvent_timeoutId && clearTimeout(anzhiyu_keyUpShiftDelayEvent_timeoutId);
       if (event.keyCode === 16) {
         const keyboardTips = document.querySelector("#keyboard-tips");
-        keyboardTips.classList.remove("show");
+        keyboardTips && keyboardTips.classList.remove("show");
       }
     }
 
@@ -1708,9 +1768,6 @@ document.addEventListener("DOMContentLoaded", function () {
     GLOBAL_CONFIG.copyright !== undefined && addCopyright();
     GLOBAL_CONFIG.navMusic && listenNavMusicPause();
     if (GLOBAL_CONFIG.shortcutKey && document.getElementById("consoleKeyboard")) {
-      localStorage.setItem("keyboardToggle", "true");
-      document.getElementById("consoleKeyboard").classList.add("on");
-      anzhiyu_keyboard = true;
       executeShortcutKeyFunction();
     }
     if (GLOBAL_CONFIG.autoDarkmode) {
@@ -1733,6 +1790,8 @@ document.addEventListener("DOMContentLoaded", function () {
     consoleEl = document.getElementById("console");
 
     addDarkModeEventListener("console", ".darkmode_switchbutton");
+    addDarkModeEventListener("nav-naoDark", ".components");
+    addDarkModeEventListener("console-naoDark", ".components");
 
     if (GLOBAL_CONFIG_SITE.isPost) {
       GLOBAL_CONFIG.noticeOutdate !== undefined && addPostOutdateNotice();
@@ -1754,6 +1813,17 @@ document.addEventListener("DOMContentLoaded", function () {
     addHighlightTool();
     GLOBAL_CONFIG.isPhotoFigcaption && addPhotoFigcaption();
     scrollFn();
+
+    // 统计明暗适配
+    NaoKuo.PostChartClick();
+    // 欢迎信息
+    NaoKuo.setWelcome_info();
+    // 隐私协议信息
+    NaoKuo.setuserAgent();
+    // 博客线路切换
+    NaoKuo.setNaokuo_Host();
+    // 关于页按钮
+    NaoKuo.naoDarkButton("author-naoDark", ".components")
 
     // 刷新时第一次滚动百分比
     window.scrollCollect && window.scrollCollect();
@@ -1784,7 +1854,15 @@ document.addEventListener("DOMContentLoaded", function () {
     anzhiyu.initIndexEssay();
     anzhiyu.changeTimeInEssay();
     anzhiyu.removeBodyPaceClass();
-    anzhiyu.qrcodeCreate();
+    (async function () {
+      if (document.getElementById("qrcode")) {
+        if (typeof QRCode === 'function') {
+          anzhiyu.qrcodeCreate();
+        } else {
+          await getScript('https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js').then(anzhiyu.qrcodeCreate);
+        }
+      }
+    })();
     anzhiyu.changeTimeInAlbumDetail();
     anzhiyu.reflashEssayWaterFall();
     anzhiyu.sayhi();

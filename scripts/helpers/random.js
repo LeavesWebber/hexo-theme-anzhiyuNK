@@ -6,7 +6,13 @@ hexo.extend.generator.register("random", function (locals) {
   const posts = [];
   const link = locals.data.link || [];
   for (const post of locals.posts.data) {
-    if (post.random !== false) posts.push(post.path);
+    let postsUrl = post.path;
+    let postsregex = /(.*)\.html$/;
+    postsUrl = postsUrl.match(postsregex);
+    if (postsUrl) {
+      postsUrl = postsUrl[1];
+    }
+    if (post.random !== false) posts.push(postsUrl);
   }
 
   const link_list = [];

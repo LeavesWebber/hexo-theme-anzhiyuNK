@@ -104,6 +104,7 @@
       mode: theme.mainTone.mode,
       api: theme.mainTone.api,
       cover_change: theme.mainTone.cover_change,
+      color_thief_js: theme.mainTone.mode === 'local' ? url_for(theme.asset.color_thief_js) : 'null',
     })
   }
 
@@ -207,6 +208,10 @@ script.
       justifiedGallery: {
         js: '!{url_for(theme.asset.flickr_justified_gallery_js)}',
         css: '!{url_for(theme.asset.flickr_justified_gallery_css)}'
+      },
+      swiper: {
+        js: '!{url_for(theme.asset.swiper_js)}',
+        css: '!{url_for(theme.asset.swiper_css)}'
       }
     },
     isPhotoFigcaption: !{theme.photofigcaption},

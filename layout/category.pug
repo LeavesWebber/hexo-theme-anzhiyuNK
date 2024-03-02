@@ -10,13 +10,13 @@ block content
     include ./includes/mixins/article-sort.pug
     #category
       #catalog-bar
-        i.anzhiyufont.anzhiyu-icon-shapes
+        i.naokuofont.naokuo-icon-shapes
         #catalog-list
           .catalog-list-item
             a(href="/") 首页
           !=catalog_list("categories")
         .category-bar-next#category-bar-next(onclick="anzhiyu.scrollCategoryBarToRight()")
-          i.anzhiyufont.anzhiyu-icon-angle-double-right
+          i.naokuofont.naokuo-icon-angle-double-right
         a.catalog-more(href="/categories/")!= '更多'
       .article-sort-title= _p('page.category') + ' - ' + page.category
       +articleSort(page.posts, page.current)

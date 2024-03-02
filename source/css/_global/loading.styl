@@ -4,7 +4,7 @@ if hexo-config('preloader')
     width: 100%;
     height: 100%;
     position: fixed;
-    background: var(--anzhiyu-card-bg);
+    background: var(--naokuo-loading-bg);
     z-index: 1001;
     opacity: 1;
     overflow hidden
@@ -41,10 +41,67 @@ if hexo-config('preloader')
         z-index: -1000;
 
   @keyframes loadingAction
-    0% {
-        opacity: 1;
-    }
+    0%
+      opacity: 1
+    100%
+      opacity: .4
 
-    100% {
-        opacity: .4;
-    }
+  [data-theme="dark"]
+    --naokuo-loading-bg: #1d1e22;
+  [data-theme="light"]
+    --naokuo-loading-bg: #f9f4dc;
+
+  // 加载动画魔改
+  @keyframes huxi_light
+    0%
+      box-shadow: 0 0 1px 1px #ffce86
+    50%
+      box-shadow: 0 0 7px 7px #ffce86
+    100%
+      box-shadow: 0 0 1px 1px #ffce86
+
+  @keyframes huxi_dark
+    0%
+      box-shadow: 0 0 1px 1px #39c5bb
+    50%
+      box-shadow: 0 0 7px 7px #39c5bb
+    100%
+      box-shadow: 0 0 1px 1px #39c5bb
+
+  [data-theme=light] 
+    #loading-box 
+      .loading-img
+        animation: huxi_light 1.5s ease-in-out infinite
+    .loading-bg
+      // background: rgb(255 255 255 / 95%) !important;
+      backdrop-filter: blur(10px) !important
+
+  [data-theme=dark] 
+    #loading-box 
+      .loading-img
+        animation: huxi_dark 1.5s ease-in-out infinite;
+
+  #loading-box.loading 
+    .loading-bg
+      animation: showLoading .3s 0s backwards !important;
+      transition: .2s !important;
+      pointer-events: all
+
+  #loading-box.loaded 
+    .loading-bg
+      animation: hideLoading .3s .2s forwards !important;
+      transition: .2s !important;
+      pointer-events: none;
+      opacity: 1;
+
+  @keyframes showLoading
+    0%
+      opacity: 0
+    100%
+      opacity: 1
+
+  @keyframes hideLoading
+    0%
+      opacity: 1
+    100%
+      opacity: 0

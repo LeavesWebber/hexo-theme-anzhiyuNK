@@ -40,7 +40,7 @@ header#page-header(class=`${isHomeClass}` style=home_index_img_bg)
                 use(href='#gentle-wave', x='48', y='5')
                 use(href='#gentle-wave', x='48', y='7')
         #post-top-cover
-          img#post-top-bg(class='nolazyload' src=bg_img)
+          img#post-top-bg(crossorigin="anonymous" class='nolazyload' src=bg_img)
 
     else if is_home() 
       #site-info
@@ -53,7 +53,7 @@ header#page-header(class=`${isHomeClass}` style=home_index_img_bg)
           #site_social_icons
             !=fragment_cache('social', function(){return partial('includes/header/social')})
       #scroll-down
-        i.anzhiyufont.anzhiyu-icon-angle-down.scroll-down-effects
+        i.naokuofont.naokuo-icon-anchor.scroll-down-effects
     else
       #page-site-info
         h1#site-title=site_title

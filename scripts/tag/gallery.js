@@ -53,7 +53,7 @@ function gallery(args, content) {
     <span class="gallery-data">${dataStr}</span>
   </div><button class="gallery-load-more" style="${!lazyloadBtn ? "opacity:0" : ""}">
   <span>${data[languages[0]].load_more}</span>
-  <i class="anzhiyufont anzhiyu-icon-arrow-down"></i>
+  <i class="naokuofont naokuo-icon-arrow-down"></i>
   </button>`;
 
   return (html += `</div>`);
@@ -77,5 +77,5 @@ function galleryGroup(args) {
   `;
 }
 
-hexo.extend.tag.register("gallery", gallery, { ends: true });
-hexo.extend.tag.register("galleryGroup", galleryGroup);
+hexo.extend.tag.register("相册", gallery, { ends: true });
+hexo.extend.tag.register("图库", galleryGroup);

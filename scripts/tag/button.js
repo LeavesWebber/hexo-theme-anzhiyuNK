@@ -15,14 +15,16 @@ function btn(args) {
   let text = args[1] || "";
   let icon = args[2] || "";
   let option = args[3] || "";
+  let type = args[4] || "";
 
   url = url.trim();
   text = text.trim();
   icon = icon.trim();
   option = option.trim();
+  type = type.trim();
 
   return `<a class="btn-anzhiyu ${option}" href="${urlFor(url)}" 
-  title="${text}">${icon.length ? `<i class="${icon}"></i>` : ""}${text.length ? `<span>${text}</span>` : ""}</a>`;
+  title="${text}" ${type.length ? `data-pjax-state data-fancybox data-type="${type}"` : ""}>${icon.length ? `<i class="${icon}"></i>` : ""}${text.length ? `<span>${text}</span>` : ""}</a>`;
 }
 
-hexo.extend.tag.register("btn", btn, { ends: false });
+hexo.extend.tag.register("按键", btn, { ends: false });

@@ -11,7 +11,7 @@
 .fontbold
   font-weight: bold
 
-.anzhiyu-icon-spinner
+.naokuo-icon-spinner
   margin: 0
   width: 16px;
   line-height: 16px;
@@ -24,15 +24,15 @@ if hexo-config('icons.fontawesome')
     text-rendering: auto
     -webkit-font-smoothing: antialiased
 
-.anzhiyufont
-  font-family: "anzhiyufont";
+.naokuofont
+  font-family: "naokuofont";
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-.anzhiyufont::before
-  font-family: "anzhiyufont" !important;
+.naokuofont::before
+  font-family: "naokuofont" !important;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -104,6 +104,10 @@ maxWidth500()
 
 maxWidth600()
   @media screen and (max-width: 600px)
+    {block}
+
+maxWidth1000()
+  @media screen and (max-width: 1000px)
     {block}
 
 maxWidth768()

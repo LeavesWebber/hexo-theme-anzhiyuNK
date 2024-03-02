@@ -1,0 +1,245 @@
+
+#anMusic-page 
+  .anMusicDot
+    position: fixed
+    display: flex
+    right: 40px
+    bottom: 100px
+    z-index: 99
+
+    .anMusicList
+      display: flex
+      width: 50px
+      height: 50px
+      background: rgba(255, 255, 255, 0.3)
+      backdrop-filter: saturate(180%) blur(20px)
+      border-radius: 50%
+      color: rgb(255, 255, 255)
+      text-align: center
+      justify-content: center
+      align-items: center
+      box-shadow: rgb(255, 255, 255) 10px 10px 60px, rgb(255, 255, 255) -10px -10px 60px
+      z-index: 99
+      i 
+        color: rgb(255, 255, 255)
+        font-size: 1.5rem
+        line-height: 50px
+  .eo-music
+    opacity: 1
+    transition: all 0.6s ease 0s
+    position: relative
+
+  #eo-music-list
+    position: fixed
+    left: 0px
+    bottom: -60%
+    width: 100%
+    max-height: 60%
+    z-index: 1001
+    background: var(--anzhiyu-card-bg)
+    padding: 40px
+    overflow-y: auto
+    transition: all 0.6s ease 0s
+    opacity:0
+    &.eomusic-onoff
+      bottom: 0
+      opacity:1
+
+    .eo-mlist
+      display: flex
+      flex-wrap: wrap
+      max-width: 1500px
+      margin: auto
+
+    .eolistbg
+      position: relative
+      width: calc(14.2857%)
+      transition: all 0.5s ease 0s
+      padding: 20px 20px 0px
+
+      .eobg 
+        span
+          display: inline-block
+          width: 100%
+          color: var(--font-color)
+          transition: all 0.5s ease 0s
+          position: relative
+          z-index: 1
+
+        img
+          width: 100%
+          border-radius: 10%
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px 5px
+          transition: all 0.5s ease 0s
+        &::before
+          content: " "
+          position: absolute
+          width: 91%
+          height: auto
+          display: flex
+          backdrop-filter: blur(10px) saturate(1.8)
+          aspect-ratio: 1 / 1
+          margin: 0px auto auto
+          right: 0px
+          left: 0px
+          top: 0px
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px 5px
+          border: 1px solid rgba(255, 255, 255, 0)
+          border-radius: 10%
+          opacity: 0
+          transition: all 0.3s ease 0s
+          z-index: 1
+        &::after
+          font-family: "naokuofont" !important
+          content: "\e689"
+          position: absolute
+          width: 100%
+          height: auto
+          display: flex
+          aspect-ratio: 1 / 1
+          left: 0px
+          top: 0px
+          border-radius: 10%
+          font-size: 2rem
+          color: rgba(255, 255, 255, 0.7)
+          justify-content: center
+          align-items: center
+          opacity: 0
+          transition: all 0.3s ease 0s
+          z-index: 1
+
+    .playimgbg 
+      .eobg 
+        img
+          transform: rotate(0deg) scale(1)
+          animation: 24s linear 0s infinite normal none paused listimgbg
+
+    .playlistimgbg 
+      padding: 0px 20px 20px
+      cursor: pointer
+      .eobg 
+        img
+          border-radius: 50%
+          box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 60px 0px
+          background: rgba(0, 0, 0, 0)
+        span 
+          color: rgb(51, 166, 115)
+        &::before
+          opacity: 1
+          margin-top: 20px
+        &::after
+          margin-top: -10px
+          opacity: 1
+
+@keyframes listimgbg
+  0%
+    transform: rotate(0deg) scale(1)
+    box-shadow: rgba(255, 255, 255, 0) 0px 0px 2px
+  25%
+    transform: rotate(90deg) scale(1)
+    box-shadow: rgb(255, 255, 255) 0px 0px 10px
+  50%
+    transform: rotate(180deg) scale(1)
+    box-shadow: rgba(255, 255, 255, 0) 0px 0px 2px
+  75%
+    transform: rotate(270deg) scale(1)
+    box-shadow: rgb(255, 255, 255) 0px 0px 10px
+  100%
+    transform: rotate(360deg) scale(1)
+    box-shadow: rgba(255, 255, 255, 0) 0px 0px 2px
+
+
+@media screen and (min-width: 1300px)
+  #anMusic-page 
+    .anMusicList
+      &:hover
+        cursor: pointer
+
+    #eo-music-list 
+      .eolistbg
+        &:hover
+          padding: 0px 20px 20px
+          cursor: pointer
+          transition: all 0.5s ease 0s
+          .eobg 
+            span
+              color: rgb(51, 166, 115)
+              transition: all 0.5s ease 0s
+            img
+              box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 60px 0px
+              background: rgba(0, 0, 0, 0)
+              transition: all 0.5s ease 0s
+        .eobg:hover
+          &::before
+            opacity: 1
+            margin-top: 20px
+          &::after
+            margin-top: -10px
+            opacity: 1
+
+@media screen and (max-width: 768px)
+  #anMusic-page 
+    .anMusicDot
+      right: 20px
+      bottom: 170px
+      
+    #eo-music-list
+      padding: 10px
+      border-radius: 20px 20px 0px 0px
+      .eolistbg
+        width: calc(33.3333%)
+        padding: 10px 5px
+        .eobg 
+          img
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 5px 2px
+          span 
+            font-size: 14px
+
+#anMusic-page:has(.aplayer-pause)
+  .pulse
+    position: absolute
+    width: 40px
+    height: 40px
+    inset: 0px
+    margin: auto
+    border: 1px solid rgba(255, 255, 255, 0.5)
+    border-radius: 50%
+    opacity: 0
+    &.p1
+      animation: 2s ease-out 0s infinite normal none running warn
+    &.p2
+      animation: 2s ease-out 0s infinite normal none running warn2
+
+@keyframes warn
+  0%
+    transform: scale(1.2)
+    opacity: 0
+  25%
+    transform: scale(1.4)
+    opacity: 0.1
+  50%
+    transform: scale(1.6)
+    opacity: 0.3
+  75%
+    transform: scale(1.8)
+    opacity: 0.5
+  100%
+    transform: scale(2)
+    opacity: 0
+
+@keyframes warn2
+  0%
+    transform: scale(1.2)
+    opacity: 0
+  25%
+    transform: scale(1.2)
+    opacity: 0.1
+  50%
+    transform: scale(1.2)
+    opacity: 0.3
+  75%
+    transform: scale(1.5)
+    opacity: 0.5
+  100%
+    transform: scale(1.8)
+    opacity: 0

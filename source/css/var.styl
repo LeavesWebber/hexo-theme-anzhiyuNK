@@ -25,6 +25,7 @@ $site-name-font = hexo-config('blog_title_font.font-family') && unquote(hexo-con
 $hrEnable = hexo-config('hr_icon') && hexo-config('hr_icon.enable')
 $hr-icon = $hrEnable && hexo-config('hr_icon.icon') ? hexo-config('hr_icon.icon') : '\f0c4'
 $hr-icon-top = $hrEnable && hexo-config('hr_icon.icon-top') ? convert(hexo-config('hr_icon.icon-top')) : -10px
+$hr-icon-size = $hrEnable && hexo-config('hr_icon.icon-size') ? convert(hexo-config('hr_icon.icon-size')) : 16px
 // page beatutify
 $beautifyEnable = hexo-config('beautify.enable')
 $title-prefix-icon = $beautifyEnable && hexo-config('beautify.title-prefix-icon') ? hexo-config('beautify.title-prefix-icon') : '\f0c1'
@@ -149,7 +150,7 @@ $note-modern-success-hover = darken(spin($note-modern-success-text, -10), 27%)
 $note-warning-border = #f0ad4e
 $note-warning-bg = lighten(spin($note-warning-border, 10), 88% + $lbg)
 $note-warning-text = $note-warning-border
-$note-warning-icon = '\f06a'
+$note-warning-icon = '\e61a'
 $note-modern-warning-border = #fae4cd
 $note-modern-warning-bg = lighten(spin($note-modern-warning-border, 10), 43% + ($lbg * 4))
 $note-modern-warning-text = #8a6d3b
@@ -184,3 +185,7 @@ $tab-to-top-color = #99a9bf
 $tab-to-top-hover-color = $theme-color
 // Tag Plugins - timeline
 $timeline-default-color = $theme-color
+
+// Twikoo 背景
+$twikoo-bg = hexo-config('twikoo') && unquote(hexo-config('twikoo.bg'))
+$twikoo-darkbg = hexo-config('twikoo') && unquote(hexo-config('twikoo.darkbg'))

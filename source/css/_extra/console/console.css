@@ -236,7 +236,7 @@
 }
 
 .console-card.tags .card-tag-cloud a {
-  color: var(--anzhiyu-fontcolor) !important;
+  color: var(--anzhiyu-fontcolor);
   margin: 6px 4px;
   padding: 2px 8px;
   border-radius: 8px;

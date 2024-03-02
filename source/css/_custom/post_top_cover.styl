@@ -1,0 +1,7 @@
+if hexo-config('darkmode.enable') || hexo-config('display_mode') == 'dark'
+  [data-theme='dark']
+    #page-header.post-bg 
+      #post-top-cover 
+        img
+          if hexo-config('lazyload.enable') && hexo-config('lazyload.blur') && !hexo-config('lazyload.placeholder')
+            filter: blur(0) brightness(1)

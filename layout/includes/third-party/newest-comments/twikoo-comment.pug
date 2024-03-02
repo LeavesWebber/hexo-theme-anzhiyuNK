@@ -14,14 +14,13 @@ script.
       return content
     }
 
-    const getComment = () => {
-      const runTwikoo = () => {
-        twikoo.getRecentComments({
+    const getComment = async () => {
+      const runTwikoo = async () => {
+        await twikoo.getRecentComments(Object.assign({
           envId: '!{theme.twikoo.envId}',
-          region: '!{theme.twikoo.region}',
           pageSize: !{theme.newest_comments.limit},
           includeReply: true
-        }).then(function (res) {
+        })).then(function (res) {
           const twikooArray = res.map(e => {
             return {
               'content': changeContent(e.comment),
@@ -43,7 +42,7 @@ script.
       if (typeof twikoo === 'object') {
         runTwikoo()
       } else {
-        getScript('!{url_for(theme.asset.twikoo)}').then(runTwikoo)
+        await getScript('!{url_for(theme.asset.twikoo)}').then(runTwikoo)
       }
     }
 

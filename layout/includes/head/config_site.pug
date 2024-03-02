@@ -24,7 +24,7 @@ script#config-diff.
     configTitle: '!{config.title}',
     title: '!{titleVal}',
     postAI: '!{page.ai}',
-    pageFillDescription: '!{get_page_fill_description()}',
+    pageFillDescription: '!{(theme.post_head_ai_description.mode === 'tianli' || !page.ai) ? get_page_fill_description() : "null"}',
     isPost: !{is_post()},
     isHome: !{is_home()},
     isHighlightShrink: !{isHighlightShrink},

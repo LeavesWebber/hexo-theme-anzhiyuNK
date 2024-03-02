@@ -69,8 +69,8 @@ case source
 
   when 3
     script.
-      function subtitleType () {
-        getScript('https://sdk.jinrishici.com/v2/browser/jinrishici.js').then(() => {
+      async function subtitleType () {
+        await getScript('https://sdk.jinrishici.com/v2/browser/jinrishici.js').then(() => {
           jinrishici.load(result =>{
             if (!{effect}) {
               const sub = !{JSON.stringify(subContent)}
@@ -90,22 +90,24 @@ case source
         })
       }
 
-      if (!{effect}) {
-        if (typeof Typed === 'function') {
-          subtitleType()
+      (async function () {
+        if (!{effect}) {
+          if (typeof Typed === 'function') {
+            subtitleType()
+          } else {
+            await getScript('!{url_for(theme.asset.typed)}').then(subtitleType)
+          }
         } else {
-          getScript('!{url_for(theme.asset.typed)}').then(subtitleType)
+          subtitleType()
         }
-      } else {
-        subtitleType()
-      }
+      })();
 
   default
     - subContent = subContent.length ? subContent : new Array(config.subtitle)
     script.
       function subtitleType () {
         if (!{effect}) { 
-          window.typed = new Typed("#subtitle", {
+          const typed = new Typed("#subtitle", {
             strings: !{JSON.stringify(subContent)},
             startDelay: !{startDelay},
             typeSpeed: !{typeSpeed},
@@ -117,12 +119,14 @@ case source
         }
       }
 
-      if (!{effect}) {
-        if (typeof Typed === 'function') {
-          subtitleType()
+      (async function () {
+        if (!{effect}) {
+          if (typeof Typed === 'function') {
+            subtitleType()
+          } else {
+            await getScript('!{url_for(theme.asset.typed)}').then(subtitleType)
+          }
         } else {
-          getScript('!{url_for(theme.asset.typed)}').then(subtitleType)
+          subtitleType()
         }
-      } else {
-        subtitleType()
-      }
+      })();

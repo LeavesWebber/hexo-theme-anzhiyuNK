@@ -1,0 +1,43 @@
+#games
+  if site.data.games
+    each i in site.data.games
+      - let games_top_background = i.top_background
+      - let games_top_video = i.top_video
+      .author-content.author-content-item.GamesPage.single(style=`${games_top_background ? `background: url(${games_top_background}) top / cover no-repeat;` : ""}`)
+        if games_top_video
+          video#Top_Video(width="100%" height="100%" style="object-fit: cover;z-index: 0;" preload="auto" autoplay="" loop="" muted="true" playsinline="" webkit-playsinline="" x5-playsinline="" x5-video-player-type="h5" x5-video-player-fullscreen="" x5-video-orientation="portraint" x-webkit-airplay="allow")
+            source(src=`${games_top_video}` type="video/mp4")
+        .card-content
+          .author-content-item-tips=i.class_name
+          span.author-content-item-title=i.description
+          .content-bottom
+            .tips=i.tip
+          .banner-button-group
+            a.banner-button(onclick=`pjax.loadUrl("${url_for(i.buttonLink ? i.buttonLink : '/about')}")`, data-pjax-state)
+              i.naokuofont.naokuo-icon-circle-arrow-up-right-1(style='font-size: 1.3rem')
+              span.banner-button-text=i.buttonText ? i.buttonText : "关于我"
+      each item in i.good_games
+        .goodgames-item
+          h2.goodgames-title= item.title
+          .goodgames-item-description= item.description
+          .games-item
+            .games-item-content
+              each iten, indey in item.games_list
+                .games-item-content-item
+                  .games-item-content-item-cover
+                    img.games-item-content-item-image(data-lazy-src=url_for(iten.image) onerror=`this.onerror=null;this.src='` + url_for(theme.error_img.flink) + `'` alt=iten.name)
+                  .games-item-content-item-info
+                    .games-item-content-item-name(onclick=`rm.rightmenuCopyText('${iten.name}');anzhiyu.snackbarShow('${"已复制游戏名称 【" + iten.name + "】"}');` title=iten.name)= iten.name
+                    .games-item-content-item-specification= iten.specification
+                    .games-item-content-item-description= iten.description
+                    .games-item-content-item-toolbar
+                      if iten.link.includes('https://') || iten.link.includes('http://')
+                        a.games-item-content-item-link(href= iten.link, target='_blank') 详情
+                        .bber-reply(onclick="rm.rightMenuCommentText(" + `'${iten.name + " " + iten.specification + " " + iten.description}'` + ")")
+                          i.naokuofont.naokuo-icon-message
+                      else  
+                        a.games-item-content-item-link(href= iten.link, target="_top") 前往
+                        if iten.source_code
+                          a.games-item-content-item-link(href= iten.source_code, target="_blank") 源码                    
+                        .bber-reply(onclick="rm.rightMenuCommentText(" + `'${iten.name + " " + iten.specification + " " + iten.description}'` + ")")
+                          i.naokuofont.naokuo-icon-message

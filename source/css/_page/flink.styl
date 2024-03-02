@@ -168,13 +168,24 @@ body[data-type="link"]
           overflow: hidden;
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 2;
+
+      span.date-friends
+        position: absolute
+        bottom: -20px
+        right: 6px
+        color: var(--anzhiyu-fontcolor)
+        opacity: 0
+        transition: 0.3s
       &:hover
         transform: scale(1);
         background: var(--anzhiyu-theme);
         border: var(--style-border-hover);
         box-shadow: var(--anzhiyu-shadow-main);
         .site-card-tag
-          left: -70px;
+          top: -70px
+          right: -70px
+          opacity: 0
+          transition: 0.6s
         a 
           img 
             transition: 0.6s;
@@ -192,6 +203,9 @@ body[data-type="link"]
             overflow: hidden;
             width: 100%;
             color: var(--anzhiyu-white);
+        span.date-friends
+          bottom: 3px
+          opacity: 0.7
 
 .flink-name
   margin-bottom: 5px
@@ -330,13 +344,14 @@ body[data-type="link"]
 .site-card-tag
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
+  opacity: 1
   padding: 4px 8px;
   background-color: var(--anzhiyu-theme);
   box-shadow: var(--anzhiyu-shadow-blue);
   color: var(--anzhiyu-white);
   z-index: 1;
-  border-radius: 11px 0 12px 0;
+  border-radius: 0 11px 0 12px;
   transition: 0.3s;
   font-size: 12px;
   &.speed
@@ -382,6 +397,9 @@ body[data-type="link"]
       width: calc(100% / 7 - 16px);
       background: var(--anzhiyu-card-bg);
       box-shadow: var(--anzhiyu-shadow-border);
+      margin: 8px;
+      display: block;
+      line-height: 1.4;
       .img-alt
         display: none
       +maxWidth1200()
@@ -410,7 +428,10 @@ body[data-type="link"]
                 -webkit-line-clamp: 4;
 
         .site-card-tag
-          left: -50px;
+          top: -50px;
+          right: -50px;
+          opacity: 0
+          transition: 0.6s;
         .img
           height: 80px;
           img

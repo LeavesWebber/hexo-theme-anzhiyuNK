@@ -1,33 +1,32 @@
-- const { envId, region, option } = theme.twikoo
+- const { envId, region, lang, option } = theme.twikoo
 - const { use, lazyload, count } = theme.comments
 
 script.
   (() => {
-    const init = () => {
-      twikoo.init(Object.assign({
+    const init = async () => {
+      await twikoo.init(Object.assign({
         el: '#twikoo-wrap',
         envId: '!{envId}',
-        region: '!{region}',
         onCommentLoaded: () => {
           anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
-        }
-      }, !{JSON.stringify(option)}))
+        },
+        lang: '!{lang}',
+      }, !{JSON.stringify(option || {})}))
     }
 
-    const loadTwikoo = () => {
+    const loadTwikoo = async () => {
       if (typeof twikoo === 'object') setTimeout(runFn,0)
-      else getScript('!{url_for(theme.asset.twikoo)}').then(runFn)
+      else await getScript('!{url_for(theme.asset.twikoo)}').then(runFn)
     }
 
-    const getCount = () => {
+    const getCount = async () => {
       const countELement = document.getElementById('twikoo-count')
       if(!countELement) return
-      twikoo.getCommentsCount({
+      await twikoo.getCommentsCount(Object.assign({
         envId: '!{envId}',
-        region: '!{region}',
         urls: [window.location.pathname],
-        includeReply: false
-      }).then(res => {
+        includeReply: false,
+      })).then(res => {
         countELement.textContent = res[0].count
       }).catch(err => {
         console.error(err)
@@ -41,9 +40,7 @@ script.
 
     if ('!{use[0]}' === 'Twikoo' || !!{lazyload}) {
       if (!{lazyload}) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
-      else {
-        loadTwikoo()
-      }
+      else loadTwikoo()
     } else {
       window.loadOtherComment = loadTwikoo
     }

@@ -9,11 +9,10 @@ script.
       return urlArray
     }
 
-    const getCount = () => {
-      const runTwikoo = () => {
-        twikoo.getCommentsCount({
+    const getCount = async () => {
+      const runTwikoo = async () => {
+        await twikoo.getCommentsCount({
           envId: '!{theme.twikoo.envId}',
-          region: '!{theme.twikoo.region}',
           urls: getCommentUrl(),
           includeReply: false
         }).then(function (res) {
@@ -25,11 +24,11 @@ script.
         })
       }
 
-        if (typeof twikoo === 'object') {
-          runTwikoo()
-        } else {
-          getScript('!{url_for(theme.asset.twikoo)}').then(runTwikoo)
-        }
+      if (typeof twikoo === 'object') {
+        runTwikoo()
+      } else {
+        await getScript('!{url_for(theme.asset.twikoo)}').then(runTwikoo)
+      }
     }
 
     window.pjax ? getCount() : window.addEventListener('load', getCount)

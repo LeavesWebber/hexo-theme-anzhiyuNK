@@ -1,21 +1,21 @@
 algolia_search:
   name: algoliasearch
   file: dist/algoliasearch-lite.umd.js
-  version: 4.18.0
+  version: 4.22.1
 instantsearch:
   name: instantsearch.js
   file: dist/instantsearch.production.min.js
-  version: 4.60.0
+  version: 4.65.0
 docsearch_js:
   name: "@docsearch/js"
   other_name: docsearch-js
   file: dist/umd/index.js
-  version: 3.5.1
+  version: 3.5.2
 docsearch_css:
   name: "@docsearch/css"
   other_name: docsearch-css
   file: dist/style.css
-  version: 3.5.1
+  version: 3.5.2
 pjax:
   name: pjax
   file: pjax.min.js
@@ -31,22 +31,22 @@ valine:
 twikoo:
   name: twikoo
   file: dist/twikoo.all.min.js
-  version: 1.6.25
+  version: 1.6.31
 waline_js:
   name: "@waline/client"
   file: dist/waline.js
   other_name: waline
-  version: 2.15.5
+  version: 2.15.8
 waline_css:
   name: "@waline/client"
   file: dist/waline.css
   other_name: waline
-  version: 2.15.5
+  version: 2.15.8
 waline_meta_css:
   name: "@waline/client"
   file: dist/waline-meta.css
   other_name: waline
-  version: 2.15.5
+  version: 2.15.8
 sharejs:
   name: butterfly-extsrc
   file: sharejs/dist/js/social-share.min.js
@@ -72,7 +72,7 @@ katex_copytex:
 mermaid:
   name: mermaid
   file: dist/mermaid.min.js
-  version: 10.2.4
+  version: 10.6.1
 canvas_ribbon:
   name: butterfly-extsrc
   file: dist/canvas-ribbon.min.js
@@ -104,7 +104,7 @@ ClickShowText:
 lazyload:
   name: vanilla-lazyload
   file: dist/lazyload.iife.min.js
-  version: 17.8.5
+  version: 17.8.8
 instantpage:
   name: instant.page
   file: instantpage.js
@@ -120,12 +120,12 @@ pangu:
 fancybox_css:
   name: "@fancyapps/ui"
   file: dist/fancybox/fancybox.css
-  version: 5.0.28
+  version: 5.0.33
   other_name: fancyapps-ui
 fancybox:
   name: "@fancyapps/ui"
   file: dist/fancybox/fancybox.umd.js
-  version: 5.0.28
+  version: 5.0.33
   other_name: fancyapps-ui
 medium_zoom:
   name: medium-zoom
@@ -152,18 +152,6 @@ flickr_justified_gallery_css:
   name: flickr-justified-gallery
   file: dist/fjGallery.css
   version: 2.1.2
-aplayer_css:
-  name: anzhiyu-theme-static
-  file: aplayer/APlayer.min.css
-  version: 1.0.0
-aplayer_js:
-  name: anzhiyu-blog-static
-  file: js/APlayer.min.js
-  version: 1.0.1
-meting_js:
-  name: hexo-anzhiyu-music
-  file: assets/js/Meting2.min.js
-  version: 1.0.1
 prismjs_js:
   name: prismjs
   file: prism.js
@@ -193,38 +181,74 @@ pace_js:
   file: pace.min.js
   version: 1.2.4
 pace_default_css:
-  name: anzhiyu-theme-static
+  name: naokuo-blog-static
   file: progress_bar/progress_bar.css
-  version: 1.1.10
+  version: 1.0.7
 coin_js:
-  name: anzhiyu-theme-static
+  name: naokuo-blog-static
   file: coin/coin.js
-  version: 1.0.0
+  version: 1.0.7
 coin_css:
-  name: anzhiyu-theme-static
+  name: naokuo-blog-static
   file: coin/coin.min.css
-  version: 1.0.0
+  version: 1.0.7
 countup_js:
-  name: anzhiyu-theme-static
+  name: naokuo-blog-static
   file: countup/countup.js
-  version: 1.0.0
+  version: 1.0.7
 gsap_js:
-  name: anzhiyu-theme-static
+  name: naokuo-blog-static
   file: gsap/gsap.min.js
-  version: 1.0.0
+  version: 1.0.7
 rightmenu:
-  name: anzhiyu-theme-static
+  name: naokuo-blog-static
   file: rightmenu/rightmenu.js
-  version: 1.0.0
+  version: 1.0.7
 waterfall:
-  name: anzhiyu-theme-static
+  name: naokuo-blog-static
   file: waterfall/waterfall.js
-  version: 1.0.0
+  version: 1.0.7
 ali_iconfont_css:
-  name: anzhiyu-theme-static
-  file: icon/ali_iconfont_css.css
-  version: 1.1.9
+  name: naokuo-blog-static
+  file: icon/iconfont.css
+  version: 1.0.7
 accesskey_js:
-  name: anzhiyu-theme-static
+  name: naokuo-blog-static
   file: accesskey/accesskey.js
-  version: 1.1.5
+  version: 1.0.7
+bubble_js:
+  name: naokuo-blog-static
+  file: bubble/bubble.js
+  version: 1.0.7
+biliBg_js:
+  name: naokuo-blog-static
+  file: biliBg/biliBg.js
+  version: 1.0.7
+dark_js:
+  name: naokuo-blog-static
+  file: dark/dark.js
+  version: 1.0.7
+swiper_js:
+  name: naokuo-blog-static
+  file: swiper/swiper.min.js
+  version: 1.0.7
+swiper_css:
+  name: naokuo-blog-static
+  file: swiper/swiper.min.css
+  version: 1.0.7
+color_thief_js:
+  name: naokuo-blog-static
+  file: color-thief/color-thief.umd.min.js
+  version: 1.0.7
+aplayer_css:
+  name: naokuo-blog-static
+  file: aplayer/APlayer.min.css
+  version: 1.0.7
+aplayer_js:
+  name: naokuo-blog-static
+  file: aplayer/APlayer.min.js
+  version: 1.0.7
+meting_js:
+  name: naokuo-blog-static
+  file: aplayer/Meting2.min.js
+  version: 1.0.11

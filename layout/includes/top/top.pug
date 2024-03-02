@@ -15,9 +15,9 @@ if home_top_config.enable
             include ../anzhiyu/tags-group-all.pug
 
           a#random-hover(href='javascript:toRandomPost()')
-            i.anzhiyufont.anzhiyu-icon-paper-plane
+            i.naokuofont.naokuo-icon-paper-plane
             .bannerText 随便逛逛
-              i.anzhiyufont.anzhiyu-icon-arrow-right
+              i.naokuofont.naokuo-icon-arrow-right
         .categoryGroup
           each item in home_top_config.category
             .categoryItem(style=`box-shadow:${item.shadow}`)
@@ -28,8 +28,8 @@ if home_top_config.enable
                 else if (item.icon.startsWith("icon"))
                   svg.icon(aria-hidden="true")
                     use(xlink:href=`#`+ item.icon)
-                else if (item.icon.startsWith("anzhiyu"))
-                  i.anzhiyufont(class=`${item.icon}`)
+                else if (item.icon.startsWith("naokuo"))
+                  i.naokuofont(class=`${item.icon}`)
       if theme.home_top.swiper.enable
         #swiper_container_blog
           #swiper_container.blog-slider.swiper-container-fade.swiper-container-horizontal
@@ -76,7 +76,7 @@ if home_top_config.enable
           - let top_group_banner_link = url_for(theme.home_top.banner.link)
 
           each item, index in top_group_list.slice(0, 6)
-            .recent-post-item(onclick=`pjax.loadUrl("${url_for(item.path)}")`)
+            .recent-post-item(onclick=`pjax.loadUrl('${url_for(item.path)}')`)
               .post_cover.left_radius
                 a(href=item.path, title=item.title)
                   span.recent-post-top-text 荐
@@ -90,7 +90,7 @@ if home_top_config.enable
             img.todayCard-cover(src=url_for(top_group_banner_image) onerror=`this.onerror=null;this.src='${url_for(theme.error_img.post_page)}'` alt='封面')
             .banner-button-group
               .banner-button(onclick='event.stopPropagation();event.preventDefault();anzhiyu.hideTodayCard();')
-                i.anzhiyufont.anzhiyu-icon-arrow-circle-right
+                i.naokuofont.naokuo-icon-circle-arrow-up-right-1
                 span.banner-button-text 更多推荐
         
         link(rel="stylesheet", href=theme.home_top.banner.top_group_banner_css)

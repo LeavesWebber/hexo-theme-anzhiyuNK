@@ -1,0 +1,16 @@
+#naokuo_statistics
+  - let statistics_background = page.top_background
+  .author-content.author-content-item.album.single(style=`${statistics_background ? `background: url(${statistics_background}) top / cover no-repeat;` : ""}`)
+    .card-content
+      .author-content-item-tips 文章统计
+      span.author-content-item-title 这里是我的文章统计哦😯
+      .content-bottom
+        .tips 统计本博客文章数据
+      .banner-button-group
+        a.banner-button(onclick=`pjax.loadUrl('/about/')`)
+          i.naokuofont.naokuo-icon-circle-arrow-up-right-1(style='font-size: 1.5rem')
+          span.banner-button-text 关于本人
+  #naokuo_charts
+    #posts-chart(data-start="2021-01" style="border-radius: 8px; height: 300px; padding: 10px;margin: var(--album-spacing-xxl) 0 0;")
+    #tags-chart(data-length="10" style="border-radius: 8px; height: 300px; padding: 10px;margin: var(--album-spacing-xxl) 0 0;")
+    #categories-chart(data-parent="true" style="border-radius: 8px; height: 300px; padding: 10px;margin: var(--album-spacing-xxl) 0 0;")

@@ -6,13 +6,12 @@
           .banners-title-small 友情链接
           .banners-title-big=theme.linkPageTop ? theme.linkPageTop.title : "与数百名博主无限进步"
         .banner-button-group
-          if (theme.friends_vue.apiurl)
-            a.banner-button.secondary.no-text-decoration(onclick="friendChainRandomTransmission()")
-              i.anzhiyufont.anzhiyu-icon-paper-plane1
-              span.banner-button-text 随机访问
+          a.banner-button.secondary.no-text-decoration(onclick="friendChainRandomTransmission()")
+            i.naokuofont.naokuo-icon-paper-plane1
+            span.banner-button-text 随机访问
           if theme.linkPageTop.addFriendPlaceholder && theme.comments.use == 'Twikoo' && theme.twikoo.envId
             a.banner-button.no-text-decoration(onclick="anzhiyu.addFriendLink()")
-              i.anzhiyufont.anzhiyu-icon-arrow-circle-right
+              i.naokuofont.naokuo-icon-circle-arrow-up-right-1
               span.banner-button-text 申请友链
       #skills-tags-group-all
         .tags-group-wrapper
@@ -36,15 +35,16 @@
                       img.no-lightbox(title=evenNum[index].name, src=url_for(evenNumAvatar + hundredSuffix) onerror=`this.onerror=null;this.src='` + url_for(theme.error_img.flink) + `'` alt=evenNum[index].name)
                     a.tags-group-icon.no-text-decoration(href=url_for(oddNum[index].link), title=oddNum[index].name)
                       img.no-lightbox(title=oddNum[index].name, src=url_for(oddNumAvatar + hundredSuffix) onerror=`this.onerror=null;this.src='` + url_for(theme.error_img.flink) + `'` alt=oddNum[index].name)
-  .title-h2-a
-    .title-h2-a-left
-      h2(style='padding-top:0;margin:.6rem 0 .6rem') 🎣 钓鱼
-      a.random-post-start.no-text-decoration(href='javascript:fetchRandomPost();')
-        i.anzhiyufont.anzhiyu-icon-arrow-rotate-right
-    .title-h2-a-right
-      a.random-post-all.no-text-decoration(href='/link/') 全部友链
-  #random-post
-  script(defer data-pjax src=url_for(theme.asset.random_friends_post_js))
+  if theme.friends_vue.apiurl && theme.friends_vue.enable
+    .title-h2-a
+      .title-h2-a-left
+        h2(style='padding-top:0;margin:.6rem 0 .6rem') 🎣 钓鱼
+        a.random-post-start.no-text-decoration(href='javascript:fetchRandomPost();')
+          i.naokuofont.naokuo-icon-arrow-rotate-right
+      .title-h2-a-right
+        a.random-post-all.no-text-decoration(href='/link/') 全部友链
+    #random-post
+    script(defer data-pjax src=url_for(theme.asset.random_friends_post_js))
   
   .flink
     if site.data.link
@@ -87,6 +87,8 @@
                       .flink-item-info
                         .flink-item-name.cf-friends-name= item.name
                         .flink-item-desc(title=item.descr)= item.descr
+                      if item.date
+                        span.date-friends= item.date
         
         else if i.flink_style === 'telescopic'
           .telescopic-site-card-group
@@ -112,6 +114,7 @@
                   .site-card-text
                     span.title.cf-friends-name #[=item.name]
                     span.desc(title=`${item.descr}`) #[=item.descr]
+                    
         else if i.flink_style === 'flexcard'
           .flexcard-flink-list
             each item in i.link_list

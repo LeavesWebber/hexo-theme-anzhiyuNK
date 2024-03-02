@@ -29,9 +29,9 @@ mixin articleSort(posts, current)
                 each item, index in article.tags.data
                   a(href=url_for(item.path) tabindex="-1").article-meta__tags 
                     span 
-                      i.anzhiyufont.anzhiyu-icon-hashtag
+                      i.naokuofont.naokuo-icon-hashtag
                       =item.name
             .article-sort-item-time
-              i.anzhiyufont.anzhiyu-icon-calendar-alt
+              i.naokuofont.naokuo-icon-calendar-alt
               time.post-meta-date-created(datetime=date_xml(article.date) title=_p('post.created') + ' ' + full_date(article.date))= date(article.date, config.date_format)
     - })

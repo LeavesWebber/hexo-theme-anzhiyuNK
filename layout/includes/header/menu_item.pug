@@ -15,8 +15,8 @@ if theme.menu
               else if icon_value.substring(0,4)=="icon"
                 svg.icon(aria-hidden="true" class=anima_value)
                   use(xlink:href=`#`+ icon_value)
-              else if icon_value.substring(0,4)=="anzhiyu"
-                i.anzhiyufont(style="font-size: 0.9em;" class=icon_value + ' ' + anima_value)
+              else if icon_value.substring(0,4)=="naokuo"
+                i.naokuofont(style="font-size: 0.9em;" class=icon_value + ' ' + anima_value)
             span=' '+label
       else
         .menus_item
@@ -29,8 +29,8 @@ if theme.menu
               else if (icon_label.startsWith("icon"))
                 svg.icon(aria-hidden="true" class=anima_label)
                   use(xlink:href=`#`+ icon_label)
-              else if (icon_label.startsWith("anzhiyu"))
-                i.anzhiyufont(style="font-size: 0.9em;" class=icon_label + ' ' + anima_label)
+              else if (icon_label.startsWith("naokuo"))
+                i.naokuofont(style="font-size: 0.9em;" class=icon_label + ' ' + anima_label)
             span=' '+ trim(label.split('||')[0])
           ul.menus_item_child
             each val,lab in value
@@ -44,6 +44,6 @@ if theme.menu
                     else if (icon_val.startsWith("icon"))
                       svg.icon(aria-hidden="true" class=anima_val)
                         use(xlink:href=`#`+ icon_val)
-                    else if (icon_val.startsWith("anzhiyu"))
-                      i.anzhiyufont(style="font-size: 0.9em;" class=icon_val + ' ' + anima_val)
+                    else if (icon_val.startsWith("naokuo"))
+                      i.naokuofont(style="font-size: 0.9em;" class=icon_val + ' ' + anima_val)
                   span=' '+ lab

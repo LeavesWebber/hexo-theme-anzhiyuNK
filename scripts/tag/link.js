@@ -14,21 +14,21 @@ function link(args) {
     InsideStation = true;
   }
 
-  return `<div calss='anzhiyu-tag-link'><a class="tag-Link" target="_blank" href="${urlFor(link)}">
+  return `<div calss='anzhiyu-tag-link'><a class="tag-Link" ${InsideStation ? "target='_self'" : "target='_blank'"} href="${urlFor(link)}">
     <div class="tag-link-tips">${InsideStation ? "站内地址" : "引用站外地址"}</div>
     <div class="tag-link-bottom">
         <div class="tag-link-left" style="${
-          imgUrl ? `background-image: url(${InsideStation ? "/img/512.png" : imgUrl})` : ""
+          imgUrl ? `background-image: url(${InsideStation ? "/img/pwa/android-chrome-512x512.png" : imgUrl})` : ""
         }">
-          <i class="anzhiyufont anzhiyu-icon-link" style="${imgUrl ? "display: none" : ""}"></i>
+          <i class="naokuofont naokuo-icon-link" style="${imgUrl ? "display: none" : ""}"></i>
         </div>
         <div class="tag-link-right">
             <div class="tag-link-title">${title}</div>
             <div class="tag-link-sitename">${sitename}</div>
         </div>
-        <i class="anzhiyufont anzhiyu-icon-angle-right"></i>
+        <i class="naokuofont naokuo-icon-angle-right"></i>
     </div>
     </a></div>`;
 }
 
-hexo.extend.tag.register("link", link, { ends: false });
+hexo.extend.tag.register("链接", link, { ends: false });

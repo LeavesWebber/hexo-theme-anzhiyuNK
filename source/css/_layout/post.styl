@@ -149,8 +149,8 @@ blockquote {
       if hexo-config('icons.fontawesome')
         @extend .fontawesomeIcon
       else
-        @extend .anzhiyufont
-      content: '\f0c1'
+        @extend .naokuofont
+      content: '\e683'
       float: right
       color: var(--headline-presudo)
       transition: all .3s
@@ -337,7 +337,7 @@ blockquote {
       white-space: nowrap;
       user-select: none;
   
-    .anzhiyufont.anzhiyu-icon-copyright
+    .naokuofont.naokuo-icon-copyright
       position: absolute
       font-size: 1.3em
       top: -71px;
@@ -392,7 +392,7 @@ blockquote {
           @extend .fontawesomeIcon
           content: '\f071'
         else
-          @extend .anzhiyufont
+          @extend .naokuofont
           content: '\e66f'
         position: absolute
         top: 50%
@@ -434,14 +434,14 @@ blockquote {
     font-size: 20px;
     line-height: 20px;
     height 20px
-  .anzhiyufont.anzhiyu-icon-circle-dot
+  .naokuofont.naokuo-icon-circle-dot
     margin-left: auto;
     margin-right: 4px;
     font-size: 14px;
     opacity: 0;
     &:active
       transform: scale(0.97);
-  .anzhiyufont.anzhiyu-icon-arrow-rotate-right
+  .naokuofont.naokuo-icon-arrow-rotate-right
     font-size: 14px;
     margin-left: 4px
     cursor pointer

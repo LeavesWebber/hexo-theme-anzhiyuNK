@@ -1,0 +1,18 @@
+- const { frameRate, animationTime, stepSize, accelerationDelta, accelerationMax, keyboardSupport, arrowScroll, pulseAlgorithm, pulseScale, pulseNormalize, fixedBackground } = theme.smoothscroll
+
+script.
+  window.SmoothScrollOptions = { 
+    frameRate: !{frameRate ? frameRate : 150 },
+    animationTime: !{animationTime ? animationTime : 400 },
+    stepSize: !{stepSize ? stepSize : 100 },
+    accelerationDelta: !{accelerationDelta ? accelerationDelta : 50 },
+    accelerationMax: !{accelerationMax ? accelerationMax : 3 },
+    keyboardSupport: !{keyboardSupport},
+    arrowScroll: !{arrowScroll ? arrowScroll : 50 },
+    pulseAlgorithm: !{pulseAlgorithm},
+    pulseScale: !{pulseScale ? pulseScale : 4 },
+    pulseNormalize: !{pulseNormalize ? pulseNormalize : 1 },
+    fixedBackground: !{fixedBackground}
+  }
+
+script(async src=url_for(theme.smoothscroll.smoothscroll_js))

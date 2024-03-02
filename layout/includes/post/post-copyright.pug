@@ -4,7 +4,7 @@ if theme.post_copyright.enable && page.copyright !== false
   - let info = page.copyright_info || _p('post.copyright.copyright_content', theme.post_copyright.license_url, theme.post_copyright.license, config.url, config.title)
   .post-copyright
     .copyright-cc-box
-      i.anzhiyufont.anzhiyu-icon-copyright
+      i.naokuofont.naokuo-icon-copyright
     .post-copyright__author_box
       - let copyright_author_img_back = theme.post_copyright.copyright_author_img_back ? theme.post_copyright.copyright_author_img_back : theme.avatar.img
       - let copyright_author_img_front = theme.post_copyright.copyright_author_img_front ? theme.post_copyright.copyright_author_img_front : theme.avatar.img
@@ -35,7 +35,7 @@ if theme.post_copyright.enable && page.copyright !== false
               each item, index in page.tags.data
                 a(href=url_for(item.path)).post-meta__box__tags
                   span.tags-punctuation 
-                    i.anzhiyufont.anzhiyu-icon-tag
+                    i.naokuofont.naokuo-icon-tag
                   =item.name
                   span.tagsPageCount=item.length
 
@@ -48,7 +48,7 @@ if theme.post_copyright.enable && page.copyright !== false
               each item, index in page.categories.data
                 a(href=url_for(item.path)).post-meta__box__categoryes
                   span.categoryes-punctuation 
-                    i.anzhiyufont.anzhiyu-icon-inbox
+                    i.naokuofont.naokuo-icon-inbox
                   =item.name
                   span.categoryesPageCount=item.length
           if (theme.post_meta.post.tags)
@@ -56,7 +56,7 @@ if theme.post_copyright.enable && page.copyright !== false
               each item, index in page.tags.data
                 a(href=url_for(item.path)).post-meta__box__tags
                   span.tags-punctuation 
-                    i.anzhiyufont.anzhiyu-icon-tag
+                    i.naokuofont.naokuo-icon-tag
                   =item.name
                   span.tagsPageCount=item.length
 

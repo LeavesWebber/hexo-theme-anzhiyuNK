@@ -15,7 +15,7 @@ const lazyload = htmlContent => {
     : "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
   return htmlContent.replace(
     /(<img(?!.class[\t]*=[\t]*['"].*?nolazyload.*?['"]).*? src=)/gi,
-    `$1 "${bg}" onerror="this.onerror=null,this.src=&quot;${error_img}&quot;" data-lazy-src=`
+    `$1 "${bg}" onerror="this.onerror=null,this.src='${error_img}'" data-lazy-src=`
   );
 }
 

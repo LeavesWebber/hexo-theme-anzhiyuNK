@@ -7,12 +7,12 @@
       .content-bottom
         .tips 每一张照片都是一次美好的记忆。
       .banner-button-group
-        a.banner-button(onclick='pjax.loadUrl("/about/")')
-          i.anzhiyufont.anzhiyu-icon-arrow-circle-right(style='font-size: 1.5rem')
+        a.banner-button(onclick="pjax.loadUrl('/about/')")
+          i.naokuofont.naokuo-icon-circle-arrow-up-right-1(style='font-size: 1.5rem')
           span.banner-button-text 关于本人
   .card-album
     each i in site.data.album
-      .card(onclick=`pjax.loadUrl("${i.path_name}")`)
+      .card(onclick=`pjax.loadUrl('${i.path_name}')`)
         img.card_cover(src=i.cover)
         .card__content
           p.card__category=i.class_name

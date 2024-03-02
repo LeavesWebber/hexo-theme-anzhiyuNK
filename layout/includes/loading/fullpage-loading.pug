@@ -1,15 +1,15 @@
 - loading_img = theme.preloader.avatar ? theme.preloader.avatar : theme.avatar.img
-#loading-box(onclick='document.getElementById("loading-box").classList.add("loaded")')
+#loading-box(onclick='preloader.endLoading()')
   .loading-bg
-    img.loading-img(alt="加载头像" class='nolazyload' src=url_for(loading_img))
+    img.loading-img(alt='加载头像' class='nolazyload' src=url_for(loading_img))
     .loading-image-dot
 script.
   const preloader = {
     endLoading: () => {
-      document.getElementById('loading-box').classList.add("loaded");
+      document.getElementById('loading-box').classList.add('loaded');
     },
     initLoading: () => {
-      document.getElementById('loading-box').classList.remove("loaded")
+      document.getElementById('loading-box').classList.remove('loaded')
     }
   }
   window.addEventListener('load',()=> { preloader.endLoading() })
