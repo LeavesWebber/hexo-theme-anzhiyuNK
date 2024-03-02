@@ -345,3 +345,58 @@ cp -rf ./themes/anzhiyu/_config.yml ./_config.anzhiyu.yml
           - name: 通义千问
             link: https://tongyi.aliyun.com/
   ```
+
+## hexo插件
+  ```json
+  {
+    "name": "hexo-site",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+      "build": "hexo generate",
+      "clean": "hexo clean",
+      "deploy": "hexo deploy",
+      "server": "hexo server",
+      "gulpd": "hexo clean & hexo generate & hexo swpp & gulp & hexo deploy",
+      "servers": "hexo clean & hexo generate & gulp & hexo server",
+      "bangumiu": "hexo cinema -u",
+      "bangumid": "hexo cinema -d"
+    },
+    "hexo": {
+      "version": "7.1.1"
+    },
+    "dependencies": {
+      "gulp": "^4.0.2",
+      "hexo": "^7.1.1",
+      "hexo-abbrlink": "^2.2.1",
+      "hexo-bilibili-bangumi": "^1.8.9",
+      "hexo-blog-encrypt": "^3.1.9",
+      "hexo-deployer-git": "^4.0.0",
+      "hexo-filter-nofollow": "^2.0.2",
+      "hexo-generator-archive": "^2.0.0",
+      "hexo-generator-baidu-sitemap": "^0.1.9",
+      "hexo-generator-category": "^2.0.0",
+      "hexo-generator-feed": "^3.0.0",
+      "hexo-generator-index": "^3.0.0",
+      "hexo-generator-sitemap": "^3.0.1",
+      "hexo-generator-tag": "^2.0.0",
+      "hexo-naokuo-image-color": "^1.1.0-beta.3",
+      "hexo-naokuo-search": "^0.0.3",
+      "hexo-renderer-ejs": "^2.0.0",
+      "hexo-renderer-kramed": "^0.1.4",
+      "hexo-renderer-pug": "^3.0.0",
+      "hexo-renderer-stylus": "^3.0.1",
+      "hexo-server": "^3.0.0",
+      "hexo-swpp": "^3.3.7",
+      "hexo-wordcount": "^6.0.1",
+      "swpp-backends": "^2.3.8"
+    },
+    "devDependencies": {
+      "gulp-clean-css": "^4.3.0",
+      "gulp-fontmin": "^0.7.4",
+      "gulp-html-minifier-terser": "^7.1.0",
+      "gulp-htmlclean": "^2.7.22",
+      "gulp-terser": "^2.1.0"
+    }
+  }
+  ```
