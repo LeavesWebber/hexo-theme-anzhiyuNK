@@ -141,7 +141,7 @@ cp -rf ./themes/anzhiyu/_config.yml ./_config.anzhiyu.yml
 
 # 以上是原作者的声明；以下为个人魔改的说明
 
-- 此主题为个人魔改，如果出现 BUG 请勿麻烦原作者
+- 此仓库主题为[安知鱼主题](https://github.com/anzhiyu-c/hexo-theme-anzhiyu)个人魔改版，如果出现 BUG 请勿麻烦原作者
 
 ## 增加页面
 
