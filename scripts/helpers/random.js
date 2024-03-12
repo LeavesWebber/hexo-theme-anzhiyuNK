@@ -6,13 +6,7 @@ hexo.extend.generator.register("random", function (locals) {
   const posts = [];
   const link = locals.data.link || [];
   for (const post of locals.posts.data) {
-    let postsUrl = post.path;
-    let postsregex = /(.*)\.html$/;
-    postsUrl = postsUrl.match(postsregex);
-    if (postsUrl) {
-      postsUrl = postsUrl[1];
-    }
-    if (post.random !== false) posts.push(postsUrl);
+    if (post.random !== false) posts.push(post.path);
   }
 
   const link_list = [];
@@ -30,7 +24,7 @@ hexo.extend.generator.register("random", function (locals) {
   };`;
 
   if (themeConfig.footer.list.enable && randomNumberFriend > 0) {
-    result += `var friend_link_list=${JSON.stringify(link_list)};
+    result += `window.friend_link_list=${JSON.stringify(link_list)};
     var refreshNum = 1;
     function friendChainRandomTransmission() {
       const randomIndex = Math.floor(Math.random() * friend_link_list.length);

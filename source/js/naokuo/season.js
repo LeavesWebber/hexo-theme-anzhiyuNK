@@ -46,7 +46,7 @@
     }
     return n
   }
-  if (e.src = i >= 3 && i <= 5 ? "/img/season/lvye.svg" : i >= 6 && i <= 8 ? "/img/season/taiyang.svg" : i >= 9 && i <= 11 ? "/img/season/qiutian.svg" : "/img/season/xuehua.svg",
+  if (e.src = i >= 3 && i <= 5 ? "https://cdn.cbd.int/naokuo-blog-static@1.0.12/img/season/lvye.svg" : i >= 6 && i <= 8 ? "https://cdn.cbd.int/naokuo-blog-static@1.0.12/img/season/taiyang.svg" : i >= 9 && i <= 11 ? "https://cdn.cbd.int/naokuo-blog-static@1.0.12/img/season/qiutian.svg" : "https://cdn.cbd.int/naokuo-blog-static@1.0.12/img/season/xuehua.svg",
     s.prototype.draw = function (t) {
       t.save();
       let n = 40 * this.s;  // - 大小

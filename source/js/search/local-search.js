@@ -94,11 +94,11 @@ window.addEventListener("load", () => {
           dateUrl = "/archives/" + year + "/" + (monthNumber < 10 ? "0" + monthNumber : monthNumber) + "/";
         }
 
-        let postsregex = /(.*)\.html$/; // 匹配任何字符直到遇到".html"结尾
-        postsUrl = postsUrl.match(postsregex);
-        if (postsUrl) {
-          postsUrl = postsUrl[1];
-        }
+        // let postsregex = /(.*)\.html$/; // 匹配任何字符直到遇到".html"结尾
+        // postsUrl = postsUrl.match(postsregex);
+        // if (postsUrl) {
+        //   postsUrl = postsUrl[1];
+        // }
         return {
           title: item.querySelector("title").textContent,
           content: content,

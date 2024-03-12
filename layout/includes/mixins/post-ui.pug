@@ -17,11 +17,14 @@ mixin postUI(posts)
       -
       - const new_post = is_current('/') && (maxDate === article.date)
 
+      if (theme.post_meta.page.categories && article.categories.data.length > 0)
+        .article-categories-original
+          each item, index in article.categories.data
+            a.article-meta__categories(href=url_for(item.path) event.cancelbubble onclick="window.event.cancelBubble=true;")
+              span=item.name
+
       if post_cover && theme.cover.index_enable
         .post_cover(class=leftOrRight)
-          if (theme.post_meta.page.categories && article.categories.data.length > 0)
-            each item, index in article.categories.data
-              span.site-card-tag=item.name
           a(href=url_for(link) title=title style='display: flex;height: 100%;')
             img.post_bg(src=url_for(post_cover) onerror=`this.onerror=null;this.src='`+ url_for(theme.error_img.post_page) + `'` alt=title style='pointer-events: none')
 
@@ -32,9 +35,6 @@ mixin postUI(posts)
               span.article-meta.sticky-warp
                 i.naokuofont.naokuo-icon-thumbtack.sticky
                 span.sticky= _p('sticky')
-            //- if (theme.post_meta.page.categories && article.categories.data.length > 0)
-            //-   each item, index in article.categories.data
-            //-     .article-categories-original=item.name
             if new_post
               span.newPost 最新
             a.unvisited-post(href=url_for(link) title=title) 未读

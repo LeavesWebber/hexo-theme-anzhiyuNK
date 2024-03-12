@@ -46,6 +46,13 @@
     #random-post
     script(defer data-pjax src=url_for(theme.asset.random_friends_post_js))
   
+  #flink_sphere
+    iframe#flink_iframe(scrolling="auto" src="/games/game/link-canvas/link-canvas.html" frameborder="0" height="450px" width="100%")
+    .flink_sphereBtn
+      button(onclick="document.getElementById('flink_iframe').contentWindow.location.reload(true);")
+        i.naokuofont.naokuo-icon-dice
+        span 换个头像试试
+
   .flink
     if site.data.link
       each i in site.data.link

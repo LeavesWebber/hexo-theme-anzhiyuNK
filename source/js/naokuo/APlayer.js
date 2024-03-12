@@ -353,7 +353,7 @@
 							this.player.template.title.innerHTML = t.name, this.player.template.author.innerHTML = t.artist ? " - " + t.artist : "";
 							var n = this.player.container.getElementsByClassName("aplayer-list-light")[0];
 							n && n.classList.remove("aplayer-list-light"), 
-							this.player.container.querySelectorAll(".aplayer-list li")[this.index] && this.player.container.querySelectorAll(".aplayer-list li")[this.index].classList.add("aplayer-list-light"), 
+							this.player.container.querySelectorAll(".aplayer-list li")[this.index] ? this.player.container.querySelectorAll(".aplayer-list li")[this.index].classList.add("aplayer-list-light") : null, 
 							(0, o.default)(33 * this.index, 500, null, this.player.template.listOl), this.player.setAudio(t), 
 							this.player.lrc && this.player.lrc.switch(this.index), 
 							this.player.lrc && this.player.lrc.update(0), 1 !== this.player.duration && (this.player.template.dtime.innerHTML = r.default.secondToTime(this.player.duration))

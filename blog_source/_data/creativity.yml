@@ -1,0 +1,50 @@
+- class_name: 开启创造力
+  creativity_list:
+    - name: Java
+      color: "#fff"
+      icon: https://cdn.cbd.int/naokuo-blog@1.2.19/img/creativity/java.jpg
+    - name: Docker
+      color: "#57b6e6"
+      icon: https://cdn.cbd.int/naokuo-blog@1.2.19/img/creativity/Docker.png
+    - name: Photoshop
+      color: "#4082c3"
+      icon: https://cdn.cbd.int/naokuo-blog@1.2.19/img/creativity/Photoshop.png
+    - name: Node
+      color: "#333"
+      icon: https://npm.elemecdn.com/anzhiyu-blog@2.1.1/img/svg/node-logo.svg
+    - name: Webpack
+      color: "#2e3a41"
+      icon: https://cdn.cbd.int/naokuo-blog@1.2.19/img/creativity/Webpack.png
+    - name: Pinia
+      color: "#fff"
+      icon: https://npm.elemecdn.com/anzhiyu-blog@2.0.8/img/svg/pinia-logo.svg
+    - name: Python
+      color: "#fff"
+      icon: https://cdn.cbd.int/naokuo-blog@1.2.19/img/creativity/Python.png
+    - name: Vite
+      color: "#937df7"
+      icon: https://npm.elemecdn.com/anzhiyu-blog@2.0.8/img/svg/vite-logo.svg
+    - name: Flutter
+      color: "#4499e4"
+      icon: https://cdn.cbd.int/naokuo-blog@1.2.19/img/creativity/Flutter.png
+    - name: Vue
+      color: "#b8f0ae"
+      icon: https://cdn.cbd.int/naokuo-blog@1.2.19/img/creativity/Vue.png
+    - name: React
+      color: "#222"
+      icon: https://cdn.cbd.int/naokuo-blog@1.2.19/img/creativity/React.svg
+    - name: CSS3
+      color: "#2c51db"
+      icon: https://cdn.cbd.int/naokuo-blog@1.2.19/img/creativity/CSS3.png
+    - name: JS
+      color: "#f7cb4f"
+      icon: https://cdn.cbd.int/naokuo-blog@1.2.19/img/creativity/JS.png
+    - name: HTML
+      color: "#e9572b"
+      icon: https://cdn.cbd.int/naokuo-blog@1.2.19/img/creativity/HTML.png
+    - name: Git
+      color: "#df5b40"
+      icon: https://cdn.cbd.int/naokuo-blog@1.2.19/img/creativity/Git.webp
+    - name: Apifox
+      color: "#e65164"
+      icon: https://cdn.cbd.int/naokuo-blog@1.2.19/img/creativity/Apifox.webp

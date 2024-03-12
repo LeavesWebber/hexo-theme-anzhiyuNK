@@ -5,6 +5,14 @@
   z-index: 100
   opacity: 0
   transition: all .5s
+  display: flex
+  box-shadow: var(--anzhiyu-shadow-border)
+  background: var(--anzhiyu-post-blockquote-bg)
+  border-radius: 49px
+  flex-direction: column
+  align-items: center
+  justify-content: space-evenly
+  padding: 7px 0
   +maxWidth768()
     #switch-commentBarrage
       display: none
@@ -16,16 +24,28 @@
     height: 0
     opacity: 0
     transition: transform .4s
-    transform: translate(45px, 0)
+    transform: scale(0)
 
     &.show
       height: auto
       opacity: 1
-      transform: translate(0, 0)
+      transform: scale(1)
 
     &.status
       height: auto
       opacity: 1
+
+  #rightside-config-clock
+    display: flex
+    flex-direction: column
+    align-items: center
+    color: var(--anzhiyu-fontcolor)
+    padding: 0 4px
+    font-weight: 900
+    #rightside-clock
+      font-size: 14px
+    #rightside-clock-period
+      font-size: 12px
 
   & > div
     & > button,
@@ -34,7 +54,7 @@
       margin-bottom: 5px
       width: w = 35px
       height: w
-      border-radius: 5px
+      border-radius: 50% !important
       background-color: var(--btn-bg)
       color: var(--btn-color)
       text-align: center

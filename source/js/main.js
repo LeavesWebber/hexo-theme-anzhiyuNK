@@ -1823,7 +1823,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // 博客线路切换
     NaoKuo.setNaokuo_Host();
     // 关于页按钮
-    NaoKuo.naoDarkButton("author-naoDark", ".components")
+    NaoKuo.naoDarkButton("author-naoDark", ".components");
+    // 随机宠物挂件图片
+    NaoKuo.animalsRandomImage();
+    // 每秒钟调用一次此函数以保持时间更新
+    NaoKuo.updateClock();
 
     // 刷新时第一次滚动百分比
     window.scrollCollect && window.scrollCollect();

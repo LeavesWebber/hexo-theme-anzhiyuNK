@@ -8,7 +8,7 @@ if theme.pjax.exclude
 - let choose = theme.comments.use
 if choose
   if theme.Open_Graph_meta && (choose.includes('Twikoo'))
-    - pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]', 'meta[property="og:type"]', 'meta[property="og:site_name"]', 'meta[property="og:description"]')
+    - pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]', 'meta[property="og:type"]', 'meta[property="og:site_name"]', 'meta[property="og:description"]', 'meta[name="description"]', 'meta[name="twitter:image"]')
 
 script(src=url_for(theme.asset.pjax))
 script.

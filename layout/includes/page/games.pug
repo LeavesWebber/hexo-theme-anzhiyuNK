@@ -13,7 +13,7 @@
           .content-bottom
             .tips=i.tip
           .banner-button-group
-            a.banner-button(onclick=`pjax.loadUrl("${url_for(i.buttonLink ? i.buttonLink : '/about')}")`, data-pjax-state)
+            a.banner-button(onclick=`pjax.loadUrl('${url_for(i.buttonLink ? i.buttonLink : '/about')}')`, data-pjax-state)
               i.naokuofont.naokuo-icon-circle-arrow-up-right-1(style='font-size: 1.3rem')
               span.banner-button-text=i.buttonText ? i.buttonText : "关于我"
       each item in i.good_games

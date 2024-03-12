@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>转转魔方</title>
+  <meta name="viewport"
+    content="width=device-width,height=device-height,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+
+
+  <link rel="stylesheet" href="https://cdn.cbd.int/naokuo-blog@1.0.10/css/game/mstyle.min.css">
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <style type="text/css">
+    #bt_back {
+      position: absolute;
+      z-index: 100;
+      padding: 10px;
+      left: 0;
+      font-size: 1rem;
+      cursor: url(https://cdn.jsdelivr.net/gh/XXKDB/img_cdn/cursor/pointer2.cur), pointer !important;
+      transition: .2s ease;
+      z-index: 99;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="bt_back"><a href="/" style="color:#ffffff">🏠 首页</a></div>
+
+  <div class="ui">
+
+    <div class="ui__background"></div>
+
+    <div class="ui__game"></div>
+
+    <div class="ui__texts">
+      <h1 class="text text--title">
+        <span>魔</span>
+        <span>方</span>
+      </h1>
+      <div class="text text--note">
+        双击即可开始
+      </div>
+      <div class="text text--timer">
+        0:00
+      </div>
+      <div class="text text--complete">
+        <span>完成!</span>
+      </div>
+      <div class="text text--best-time">
+        <icon trophy></icon>
+        <span>最好 时长！</span>
+      </div>
+    </div>
+
+    <div class="ui__prefs">
+      <range name="flip" title="旋转类型" list="迅速&nbsp;,平滑,弹性"></range>
+      <range name="scramble" title="打乱时长" list="20,25,30"></range>
+      <range name="fov" title="视角" list="近镜头,远镜头"></range>
+      <range name="theme" title="配色" list="立方,鲜艳,灰调,迷彩,蓝调"></range>
+    </div>
+
+    <div class="ui__stats">
+      <div class="stats" name="total-solves">
+        <i>总计 成绩:</i><b>-</b>
+      </div>
+      <div class="stats" name="best-time">
+        <i>最好 时长:</i><b>-</b>
+      </div>
+      <div class="stats" name="worst-time">
+        <i>最差 时长:</i><b>-</b>
+      </div>
+      <div class="stats" name="average-5">
+        <i>平均 5:</i><b>-</b>
+      </div>
+      <div class="stats" name="average-12">
+        <i>平均 12:</i><b>-</b>
+      </div>
+      <div class="stats" name="average-25">
+        <i>平均 25:</i><b>-</b>
+      </div>
+    </div>
+
+    <div class="ui__buttons">
+      <button class="btn btn--bl btn--stats">
+        <icon trophy></icon>
+      </button>
+      <button class="btn btn--bl btn--prefs">
+        <icon settings></icon>
+      </button>
+      <button class="btn btn--bl btn--back">
+        <icon back></icon>
+      </button>
+      <a href="#" class="btn btn--br btn--pwa">
+
+        </button>
+
+    </div>
+
+  </div>
+  <script src="https://cdn.cbd.int/naokuo-blog@1.0.10/js/game/three.min.js"></script>
+
+
+  <script src="https://cdn.cbd.int/naokuo-blog@1.0.10/js/game/mfindex.js"></script>
+
+
+
+</body>
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?3e2cc58d4dbfbae747a93c06bf8b6b4b";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+  
+
+</html>

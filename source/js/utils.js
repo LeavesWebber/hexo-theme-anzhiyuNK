@@ -460,36 +460,38 @@ const anzhiyu = {
   // 初始化即刻
   initIndexEssay: function () {
     if (!document.querySelector(".bbTimeList#bbTimeList")) return;
-    const setessay_bar_swiper = () => {
-      const essay_bar_swiper = new Swiper(".essay_bar_swiper_container", {
-        passiveListeners: true,
-        direction: "vertical",
-        loop: true,
-        autoplay: {
-          disableOnInteraction: true,
-          delay: 3000,
-        },
-        mousewheel: true,
-      });
+    setTimeout(() => {
+      const setessay_bar_swiper = () => {
+        const essay_bar_swiper = new Swiper(".essay_bar_swiper_container", {
+          passiveListeners: true,
+          direction: "vertical",
+          loop: true,
+          autoplay: {
+            disableOnInteraction: true,
+            delay: 3000,
+          },
+          mousewheel: true,
+        });
 
-      let essay_bar_comtainer = document.getElementById("bbtalk");
-      if (essay_bar_comtainer !== null) {
-        essay_bar_comtainer.onmouseenter = function () {
-          essay_bar_swiper.autoplay.stop();
-        };
-        essay_bar_comtainer.onmouseleave = function () {
-          essay_bar_swiper.autoplay.start();
-        };
-      }
-    };
-    (async function () {
-      if (typeof Swiper === 'function') {
-        setessay_bar_swiper()
-      } else {
-        await getCSS(`${GLOBAL_CONFIG.source.swiper.css}`);
-        await getScript(`${GLOBAL_CONFIG.source.swiper.js}`).then(setessay_bar_swiper)
-      }
-    })();
+        let essay_bar_comtainer = document.getElementById("bbtalk");
+        if (essay_bar_comtainer !== null) {
+          essay_bar_comtainer.onmouseenter = function () {
+            essay_bar_swiper.autoplay.stop();
+          };
+          essay_bar_comtainer.onmouseleave = function () {
+            essay_bar_swiper.autoplay.start();
+          };
+        }
+      };
+      (async function () {
+        if (typeof Swiper === 'function') {
+          setessay_bar_swiper()
+        } else {
+          await getCSS(`${GLOBAL_CONFIG.source.swiper.css}`);
+          await getScript(`${GLOBAL_CONFIG.source.swiper.js}`).then(setessay_bar_swiper)
+        }
+      })();
+    }, 100);
   },
   scrollByMouseWheel: function ($list, $target) {
     const scrollHandler = function (e) {
@@ -888,9 +890,9 @@ const anzhiyu = {
   },
   // 获取自定义播放列表
   getCustomPlayList: function (musicId = "3067156818", Server = "netease") {
-    if (!window.location.pathname.startsWith("/music/")) {
-      return;
-    }
+
+    if (!document.querySelector('body[data-type="music"]')) return;
+
     const urlParams = new URLSearchParams(window.location.search);
     const userId = musicId;
     const userServer = Server;
@@ -941,7 +943,7 @@ const anzhiyu = {
     });
 
     function anMusicPageMenuAask() {
-      if (window.location.pathname != "/music/") {
+      if (!document.querySelector('body[data-type="music"]')) {
         document.getElementById("menu-mask").removeEventListener("click", anMusicPageMenuAask);
         return;
       }
@@ -977,7 +979,7 @@ const anzhiyu = {
     // 监听键盘事件
     //空格控制音乐
     document.addEventListener("keydown", function anMusicKeyDown(event) {
-      if (window.location.pathname != "/music/") {
+      if (!document.querySelector('body[data-type="music"]')) {
         document.removeEventListener("keydown", anMusicKeyDown);
         return;
       }
@@ -1805,7 +1807,7 @@ const NaoKuo = {
   },
   // 隐私协议信息
   setuserAgent: async () => {
-    if (window.location.pathname !== "/privacy/") return; //判断是否是隐私协议页面    
+    if (!document.querySelector('body[data-type="privacy"]')) return; //判断是否是隐私协议页面    
     try {
       let UserInfo = saveToLocal.get('welcome-info');
       if (!UserInfo) {
@@ -1925,6 +1927,57 @@ const NaoKuo = {
     if (element && willChangeMode) {
       element.setAttribute("button-theme", willChangeMode);
     }
-  }
+  },
+  // 宠物挂件随机移动
+  changeMarginLeft: function (element, parent) {
+    const Width = document.querySelector(parent).offsetWidth - 240;
+    var randomMargin = Math.floor(Math.random() * (Width - 100 + 1)) + 100; // 生成100-父元素之间的随机数
+    element.style.marginLeft = randomMargin + 'px';
+  },
+  // 随机宠物挂件图片
+  animalsRandomImage: function () {
+    const element = document.getElementById('console_climb'),
+      images = [
+        'https://cdn.cbd.int/naokuo-blog-static@1.0.12/img/animals/kaluote.webp',
+        'https://cdn.cbd.int/naokuo-blog-static@1.0.12/img/animals/keke.webp',
+        'https://cdn.cbd.int/naokuo-blog-static@1.0.12/img/animals/nimo.webp',
+        'https://cdn.cbd.int/naokuo-blog-static@1.0.12/img/animals/tugou.webp',
+        'https://cdn.cbd.int/naokuo-blog-static@1.0.12/img/animals/wate.webp',
+      ],
+      randomIndex = Math.floor(Math.random() * images.length),
+      randomImageUrl = images[randomIndex];
 
+    if (element && randomImageUrl) {
+      element.src = randomImageUrl;
+    }
+  },
+  // 定义更新时钟显示的函数
+  updateClock: function () {
+    // 获取时钟显示容器
+    const clockDisplay = document.getElementById('rightside-clock'),
+    clockPeriod = document.getElementById('rightside-clock-period');
+    // 获取当前时间
+    const now = new Date();
+
+    // 提取小时、分钟，并补零
+    let hours = now.getHours();
+    let period = null;
+    if (hours > 12) {
+      hours -= 12; // 将24小时制转换为12小时制
+      period = 'PM';
+    } else if (hours === 0) {
+      hours = 12; // 0点应显示为12点
+      period = 'AM';
+    } else {
+      period = 'AM';
+    }
+    hours = String(hours).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+
+    // 组合时间字符串并设置到页面上
+    clockDisplay.textContent = `${hours}:${minutes}`;
+    clockPeriod.textContent = `${period}`;
+    // 每秒钟调用一次此函数以保持时间更新
+    setTimeout(NaoKuo.updateClock, 1000);
+  }
 }

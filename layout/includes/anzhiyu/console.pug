@@ -7,6 +7,7 @@
             img.post-qr-code-img(alt=item.text, src=url_for(item.img))
           .post-qr-code-desc=item.text
   .console-card-group
+    img#console_climb(alt='宠物挂件' class='nolazyload' onclick=`NaoKuo.changeMarginLeft(this,'#console .console-card-group')`)
     .console-card-group-left
       !=partial('includes/widget/card_newest_comment', {}, {cache: true})
     .console-card-group-right

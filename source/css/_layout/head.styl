@@ -771,9 +771,12 @@ if hexo-config('dynamicEffect') && hexo-config('dynamicEffect.postTopWave')
     #post-firstinfo
       .meta-firstline 
         a.post-meta-original
-          background: var(--anzhiyu-black)
+          background: var(--anzhiyu-secondtext)
         .article-meta__tags
-          color: var(--anzhiyu-black)
+          color: var(--anzhiyu-secondtext)
+        span.post-meta-categories 
+          a.post-meta-categories
+            background: var(--anzhiyu-secondtext)
 +maxWidth768()
   .layout > div:first-child:not(.recent-posts)
     z-index: 10;

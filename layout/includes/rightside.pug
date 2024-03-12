@@ -29,13 +29,14 @@ mixin rightsideItem(array)
         if commentsJsLoad
           a#to_comment(href="#post-comment" title=_p("rightside.scroll_to_comment"))
             i.naokuofont.naokuo-icon-comments
-        if theme.comment_barrage_config && theme.comment_barrage_config.enable
+      when 'barrage'
+        if commentsJsLoad && theme.comment_barrage_config.enable
           a#switch-commentBarrage(href="javascript:anzhiyu.switchCommentBarrage();" title="开关弹幕")
             i.naokuofont.naokuo-icon-danmu
 
 #rightside
   - const { enable, hide, show } = theme.rightside_item_order
-  - const hideArray = enable ? hide && hide.split(',') : ['readmode','translate','darkmode','hideAside']
+  - const hideArray = enable ? hide && hide.split(',') : ['readmode','translate','darkmode','hideAside','barrage']
   - const showArray = enable ? show && show.split(',') : ['toc','chat','comment']
 
   
@@ -64,3 +65,7 @@ mixin rightsideItem(array)
 
     button#go-down(onclick="anzhiyu.scrollToDest(document.body.scrollHeight,500)" title="直达底部")
       i.naokuofont.naokuo-icon-caret-down
+
+  #rightside-config-clock
+    span#rightside-clock 08:33
+    span#rightside-clock-period PM

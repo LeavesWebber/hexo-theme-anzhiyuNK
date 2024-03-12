@@ -1,0 +1,65 @@
+- class_name_2: 网站收藏
+  description: 我的网站收藏
+  tip: 博主收藏的宝藏网站
+  # top_background: https://cdn.cbd.int/naokuo-blog/img/2023-09-071733054.webp
+  top_video: https://cdn.cbd.int/naokuo-media@1.0.0/3.mp4
+  buttonText: 关于我
+  buttonLink: /about/
+  good_sites:
+    - class_name: 收藏网站
+      class_desc: 个人收藏的网站
+      sites_list:
+        - name: 稀土掘金
+          link: https://juejin.cn/post/7262897440046678071
+        - name: 恩山论坛
+          link: https://www.right.com.cn/forum/forum.php
+        - name: GitHub
+          link: https://github.com/
+        - name: Butterfly主题美化教程
+          link: https://butterfly.zhheo.com/
+
+    - class_name: 工具箱
+      class_desc: 个人收藏的工具网站
+      sites_list:
+        - name: 透明背景制作
+          link: https://www.unscreen.com/
+        - name: Trending - CodePen
+          link: https://codepen.io/trending
+        - name: CSS clip-path 生成器
+          link: https://www.jiangweishan.com/tool/clippy/
+        - name: 路过图床
+          link: https://imgse.com/
+        - name: JS 代码压缩工具
+          link: https://www.wetools.com/js-compress
+        - name: Css转Stylus
+          link: https://verytoolz.com/css-stylus.html
+
+    - class_name: 资源库
+      class_desc: 个人收藏的资源型网站
+      sites_list:
+        - name: iconfont
+          link: https://www.iconfont.cn/
+        - name: 表情包速查
+          link: https://emotion.xiaokang.me/#/
+
+    - class_name: API库
+      class_desc: 个人收藏的API接口型网站
+      sites_list:
+        - name: 随机图片API
+          link: https://www.cnblogs.com/zaxtyson/p/11628746.html
+        - name: 随机壁纸
+          link: https://api.btstu.cn/doc/sjbz.php
+        - name: 夏柔API
+          link: https://api.aa1.cn/
+        - name: 青桔-API
+          link: https://api.qjqq.cn/
+
+    - class_name: AI工具箱
+      class_desc: 个人收藏的AI工具型网站
+      sites_list:
+        - name: LiblibAI•哩布哩布AI
+          link: https://www.liblib.art/
+        - name: 原神AI语音生成
+          link: https://v2.genshinvoice.top/
+        - name: 通义千问
+          link: https://tongyi.aliyun.com/

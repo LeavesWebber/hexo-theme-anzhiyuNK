@@ -1,0 +1,104 @@
+- class_name: 关于页
+  subtitle: 道之所存，师之所存✨
+  avatarImg: /img/avatar-1024x1024.webp
+  avatarSkills:
+    left:
+      - 🤖️ 数码科技爱好者
+      - 🔍 分享与热心帮助
+      - 🏠 智能家居小能手
+      - 🔨 设计开发一条龙
+    right:
+      - 专修交互与设计 🤝
+      - 脚踏实地行动派 🏃
+      - 团队小组发动机 🧱
+      - 壮汉人狠话不多 💢
+  name: Naokuo
+  description: 是一名 学生、博主
+  aboutsiteTips:
+    tips: 追求
+    title1: 源于
+    title2: 热爱而去 感受
+    word:
+      - 学习
+      - 生活
+      - 程序
+      - 体验
+  helloAbout: Hello there!
+  skillsTips:
+    tips: 技能
+    title: 开启创造力
+  careers:
+    tips: 生涯
+    title: 无限进步
+    list:
+      - desc: EDU,硬件工程
+        color: "#357ef5"
+    img: https://cdn.cbd.int/naokuo-blog@1.2.19/img/about/6330e9bcc39cc.png
+  statistic:
+    link: /archives
+    text: 文章隧道
+    cover: https://cdn.cbd.int/naokuo-blog@1.2.19/img/about/632d634f8376d.jpg
+  map:
+    title: 我现在住在
+    StrengthenTitle: 中国，贵阳市
+    background: https://cdn.cbd.int/naokuo-blog@1.2.12/img/about/Map.webp
+    backgroundDark: https://cdn.cbd.int/naokuo-blog@1.2.12/img/about/MapDark.webp
+  selfInfo:
+    selfInfoTips1: 生于
+    selfInfoContentYear: 2024
+    selfInfoTips2: 不知名学校
+    selfInfoContent2: 硬件工程
+    selfInfoTips3: 现在职业
+    selfInfoContent3: 学生👨‍🎓
+  personalities:
+    author_name: 执政官
+    personality_type: ESFJ-A
+    photo_url: https://cdn.cbd.int/naokuo-blog@1.2.12/img/about/MapDark.webp
+    personality_img: https://npm.elemecdn.com/anzhiyu-blog@2.0.8/img/svg/ESFJ-A.svg
+    name_url: https://www.16personalities.com/ch/esfj-%E4%BA%BA%E6%A0%BC
+  maxim:
+    maxim_tips: 座右铭
+    maxim_top: 道之所存，
+    maxim_bottom: 师之所存。
+  buff:
+    buff_tips: 特长
+    buff_top: 没有特长的 普通人类
+    buff_bottom: 折腾指数 MAX
+  game:
+    game_tips: 爱好游戏
+    game_title: 原神
+    game_uid: "UID: 117230757"
+    game_bg: https://cdn.cbd.int/naokuo-blog@1.2.19/img/about/63a079ca63c8a.webp
+  comic:
+    comic_tips: 爱好影剧
+    comic_title: 追剧
+    comic_list:
+      - name: 荒野求生
+        href: https://www.bilibili.com/bangumi/media/md129792/
+        cover: https://cdn.cbd.int/naokuo-blog@1.2.12/img/about/bangumi1.webp
+      - name: 舌尖上的中国
+        href: https://www.bilibili.com/bangumi/media/md28229407/
+        cover: https://cdn.cbd.int/naokuo-blog@1.2.12/img/about/bangumi2.webp
+      - name: 人生一串
+        href: https://www.bilibili.com/bangumi/media/md28234880/
+        cover: https://cdn.cbd.int/naokuo-blog@1.2.12/img/about/bangumi3.webp
+      - name: 中国通史
+        href: https://www.bilibili.com/bangumi/media/md28229010/
+        cover: https://cdn.cbd.int/naokuo-blog@1.2.12/img/about/bangumi4.webp
+      - name: 我在故宫修文物
+        href: https://www.bilibili.com/bangumi/media/md20792/
+        cover: https://cdn.cbd.int/naokuo-blog@1.2.12/img/about/bangumi5.webp
+  like:
+    like_tips: 关注偏好
+    like_title: 数码科技
+    like_bg: https://cdn.cbd.int/naokuo-blog@1.2.19/img/about/632f0dd8f33c6.webp
+    like_bottom: 手机、电脑软硬件
+  music:
+    music_tips: 音乐偏好
+    music_title: 周杰伦、民谣、华语流行
+    music_bg: https://p1.music.126.net/uTI9r_-vSQ1nMTNoJYRDeg==/109951167896046972.jpg?param=360y360
+    music_link: /music
+  reward_list:
+    - name: xxxx
+      amount: xxx
+      datatime: 2024-02-05
